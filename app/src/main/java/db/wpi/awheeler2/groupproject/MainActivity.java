@@ -52,15 +52,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
-    public void  changeActivity(View v) {
+    public void changeActivity(View v) {
         Intent intent = new Intent(this, photoActivity.class);
         //EditText editText = (EditText) findViewById(R.id.editText);
         String message = selectedBreed;
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
-
-
 
     public void onItemSelected(AdapterView<?> parent, View view,
                                    int pos, long id) {
