@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">GroupProject</string>
+    <string-array name="animal_array">
+        <item>Cat</item>
+        <item>Dog</item>
+        <item>Bird</item>
+        <item>Rabbit</item>
+    </string-array>
+</resources>
