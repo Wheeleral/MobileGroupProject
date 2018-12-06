@@ -36,6 +36,9 @@ public class photoActivity extends AppCompatActivity {
         //test category
         TextView text = findViewById(R.id.testCategory);
         text.setText(category);
+
+        //populate the scrollview
+        populateScroll();
     }
 
     public void changeActivityMain(View v) {
