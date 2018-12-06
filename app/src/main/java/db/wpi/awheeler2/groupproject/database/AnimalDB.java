@@ -20,8 +20,11 @@ import java.util.ArrayList;
 import db.wpi.awheeler2.groupproject.Exception.DatabaseQueryException;
 import db.wpi.awheeler2.groupproject.Exception.ExternalStorageException;
 
-/* Run functions in the background thread to optimize performance!
-** Assumption: File paths (of images) are saved in external storage as private files*/
+/* Options to optimize performance:
+** (1) Run functions in the background thread
+** (2) Store existing images in cache to optimize performance
+** Assumption: File paths (of images) are saved in external storage as private files
+*/
 public class AnimalDB {
     private AnimalDbHelper helper;
     private SQLiteDatabase db;
