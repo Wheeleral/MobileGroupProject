@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
-import android.provider.ContactsContract;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -177,5 +176,9 @@ public class AnimalDB {
         cursor.close();
 
         return imagesOfAnimal;
+    }
+
+    public void close() {
+        this.helper.close();
     }
 }
