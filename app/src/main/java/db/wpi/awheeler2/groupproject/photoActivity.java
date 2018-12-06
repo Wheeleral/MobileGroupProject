@@ -12,15 +12,20 @@ import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
+import db.wpi.awheeler2.groupproject.database.AnimalDB;
+
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class photoActivity extends AppCompatActivity {
     ArrayList<Bitmap> imagesOfAnimal;
+    AnimalDB db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo);
+
+        //need to set the db here, but don't know how to with the context
     }
 
     public void changeActivityMain(View v) {
@@ -29,10 +34,10 @@ public class photoActivity extends AppCompatActivity {
     }
 
     //probably need to run this in an async task
-    public void populateScroll(){  //this will need to take in the category
-        LinearLayout layout = (LinearLayout)findViewById(R.id.photoLayout);
+    public void populateScroll(String category){  //this will need to take in the category
+        LinearLayout layout = findViewById(R.id.photoLayout);
         //grab the images in correct category
-        imagesOfAnimal = getAllImagesOfAnimal(category); //need to make DB?  //need to get category somehow
+        imagesOfAnimal = db.getAllImagesOfAnimal(category);  //need to get category somehow
         for(int i = 0; i < imagesOfAnimal.size(); i++) {
             ImageView image = new ImageView(this);
             image.setLayoutParams(new android.view.ViewGroup.LayoutParams(80,60));
@@ -55,7 +60,7 @@ public class photoActivity extends AppCompatActivity {
         // Get the dimensions of the bitmap
         BitmapFactory.Options bmOptions = new BitmapFactory.Options();
         bmOptions.inJustDecodeBounds = true;
-        //BitmapFactory.decodeFile(path, bmOptions);
+        //BitmapFactory.decodeFile(path, bmOptions);  //hopefully putting this back in
         int photoW = bmOptions.outWidth;
         int photoH = bmOptions.outHeight;
 
@@ -67,7 +72,7 @@ public class photoActivity extends AppCompatActivity {
         bmOptions.inSampleSize = scaleFactor;
         bmOptions.inPurgeable = true;
 
-        //Bitmap bitmap = BitmapFactory.decodeFile(path, bmOptions);
+        //Bitmap bitmap = BitmapFactory.decodeFile(path, bmOptions);  //hopefully putting this back in
         image.setImageBitmap(bitmap);
     }
 
