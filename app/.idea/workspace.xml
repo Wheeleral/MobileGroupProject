@@ -36,45 +36,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
-          <provider editor-type-id="android-manifest">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="19" lean-forward="true" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DatabaseQueryException.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/Exception/DatabaseQueryException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-              <folding>
-                <element signature="e#156#157#0" expanded="true" />
-                <element signature="e#184#185#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1105">
-              <caret line="89" column="31" selection-start-line="89" selection-start-column="31" selection-end-line="89" selection-end-column="31" />
+            <state relative-caret-position="-1105">
+              <caret line="35" column="17" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AnimalDB.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AnimalDB.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/database/AnimalDB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="37" column="40" lean-forward="true" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="40" />
+            <state relative-caret-position="442">
+              <caret line="139" column="54" lean-forward="true" selection-start-line="139" selection-start-column="54" selection-end-line="139" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#5897#5898#0" expanded="true" />
@@ -84,54 +59,61 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ExternalStorageException.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/Exception/ExternalStorageException.java">
+      <file leaf-file-name="AnimalDBCache.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/database/AnimalDBCache.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="5" selection-end-column="5" />
+            <state relative-caret-position="3009">
+              <caret line="198" column="52" selection-start-line="198" selection-start-column="52" selection-end-line="198" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AnimalCache.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/database/AnimalCache.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="314">
+              <caret line="41" column="37" lean-forward="true" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
               <folding>
-                <element signature="e#158#159#0" expanded="true" />
-                <element signature="e#186#187#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#2112#2113#0" expanded="true" />
+                <element signature="e#2148#2149#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_test.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_test.xml">
+      <file leaf-file-name="TestActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/TestActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+            <state relative-caret-position="867">
+              <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
             </state>
           </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
         </entry>
       </file>
-      <file leaf-file-name="cat1.jpg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/assets/cat/cat1.jpg">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cat4.jpg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/assets/cat/cat4.jpg">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cat3.jpg" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/assets/cat/cat3.jpg">
-          <provider selected="true" editor-type-id="images">
-            <state />
+      <file leaf-file-name="AnimalDbHelper.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/database/AnimalDbHelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" column="44" lean-forward="true" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1067#1068#0" expanded="true" />
+                <element signature="e#1113#1114#0" expanded="true" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="dog1.jpeg" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/assets/dog/dog1.jpeg">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dog2.jpg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/assets/dog/dog2.jpg">
           <provider selected="true" editor-type-id="images">
             <state />
           </provider>
@@ -2408,14 +2390,17 @@
         <option value="$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/TestActivity.java" />
         <option value="$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/Exception/DatabaseQueryException.java" />
         <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/database/Animal.java" />
+        <option value="$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/database/AnimalCache.java" />
         <option value="$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/database/AnimalDB.java" />
+        <option value="$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/database/AnimalDBCache.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="943" />
+    <option name="x" value="952" />
     <option name="width" value="977" />
-    <option name="height" value="1030" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -2511,12 +2496,15 @@
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="device.picker.selection" value="Pixel_2_API_27" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Mobile &amp; Ubiquitous Computing/JoanWong_Project2/JoanWongCS4518Project2_Part2/app" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.packageName">
       <recent name="db.wpi.awheeler2.groupproject" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="db.wpi.awheeler2.groupproject.database" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -2665,14 +2653,14 @@
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="right" id="Preview" />
-      <window_info anchor="bottom" id="Run" order="8" visible="true" weight="0.32905984" />
+      <window_info anchor="bottom" id="Run" order="8" weight="0.3148148" />
       <window_info anchor="bottom" id="Version Control" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.32905984" />
       <window_info anchor="bottom" id="Logcat" order="0" weight="0.32905984" />
       <window_info id="Captures" order="2" weight="0.24966443" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="0" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.17583893" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.17718121" />
       <window_info anchor="bottom" id="Build" order="3" weight="0.32905984" />
       <window_info anchor="bottom" id="Find" order="7" />
       <window_info anchor="right" id="Gradle" order="1" />
@@ -2766,31 +2754,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/database/AnimalDbHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-153">
-          <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1067#1068#0" expanded="true" />
-            <element signature="e#1112#1113#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/TestActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-510">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-          <folding>
-            <element signature="e#1028#1191#0" expanded="true" />
-            <element signature="e#1190#1191#0" expanded="true" />
-            <element signature="e#1595#1764#0" expanded="true" />
-            <element signature="e#1763#1764#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
       <provider editor-type-id="android-manifest">
         <state />
@@ -2821,16 +2784,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/assets/dog/dog1.jpeg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/assets/cat/cat3.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/Exception/ExternalStorageException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -2853,21 +2806,98 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/dog/dog1.jpeg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/dog/dog2.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/android/util/LruCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="168" column="19" selection-start-line="168" selection-start-column="19" selection-end-line="168" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/database/Animal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+          <folding>
+            <element signature="e#183#184#0" expanded="true" />
+            <element signature="e#227#228#0" expanded="true" />
+            <element signature="e#562#563#0" expanded="true" />
+            <element signature="e#588#589#0" expanded="true" />
+            <element signature="e#479#480#0" expanded="true" />
+            <element signature="e#513#514#0" expanded="true" />
+            <element signature="e#558#559#0" expanded="true" />
+            <element signature="e#589#590#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="89" column="31" selection-start-line="89" selection-start-column="31" selection-end-line="89" selection-end-column="31" />
+        <state relative-caret-position="-1105">
+          <caret line="35" column="17" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/database/AnimalDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="37" column="40" lean-forward="true" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="40" />
+        <state relative-caret-position="442">
+          <caret line="139" column="54" lean-forward="true" selection-start-line="139" selection-start-column="54" selection-end-line="139" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5897#5898#0" expanded="true" />
             <element signature="e#5932#5933#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/database/AnimalDBCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3009">
+          <caret line="198" column="52" selection-start-line="198" selection-start-column="52" selection-end-line="198" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/database/AnimalCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="41" column="37" lean-forward="true" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2112#2113#0" expanded="true" />
+            <element signature="e#2148#2149#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/cat/cat3.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/TestActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="867">
+          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/database/AnimalDbHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="44" lean-forward="true" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1067#1068#0" expanded="true" />
+            <element signature="e#1113#1114#0" expanded="true" />
           </folding>
         </state>
       </provider>

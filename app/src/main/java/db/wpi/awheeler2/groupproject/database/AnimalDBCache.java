@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
+import android.provider.BaseColumns;
+import android.util.LruCache;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import db.wpi.awheeler2.groupproject.Exception.DatabaseQueryException;
 import db.wpi.awheeler2.groupproject.Exception.ExternalStorageException;
@@ -43,16 +46,19 @@ import db.wpi.awheeler2.groupproject.Exception.ExternalStorageException;
 ** (2) Store existing images in cache to optimize performance
 ** Assumption: File paths (of images) are saved in external storage as private files
 */
-public class AnimalDB {
+public class AnimalDBCache {
     private AnimalDbHelper helper;
     private SQLiteDatabase db;
     private Context context;
-    ArrayList<Bitmap> imagesOfAnimal = new ArrayList<>();
+    private ArrayList<Bitmap> imagesOfAnimal;
+    //private AnimalCache mMemoryCache;
 
     // Constructor
-    public AnimalDB(Context context) {
+    public AnimalDBCache(Context context) {
         this.context = context;
         this.helper = new AnimalDbHelper(context);
+        this.imagesOfAnimal = new ArrayList<>();
+        //this.mMemoryCache = new AnimalCache();
     }
 
     // Ensures that image is saved if not already
@@ -133,9 +139,9 @@ public class AnimalDB {
                 e.printStackTrace();
             }
         }
+
     }
 
-    // Assumption: Image is saved to external storage with the given file path
     public long addToDB(String tagOfImage, String pathToImage) {
         // NOTE: tagOfImage may be the result of model
         db = helper.getWritableDatabase();
@@ -159,13 +165,14 @@ public class AnimalDB {
         db = helper.getReadableDatabase();
 
         // Projection/select which columns
-        /*
         String[] projection = {BaseColumns._ID,
                 AnimalContract.AnimalEntry.COLUMN_NAME_TAG,
                 AnimalContract.AnimalEntry.COLUMN_NAME_PATH};
-                */
 
-        String[] projection = {AnimalContract.AnimalEntry.COLUMN_NAME_PATH};
+        // Check and add all bitmaps in disk cache/cache memory existing images with this tag is available
+        // Do not load from animal with this id - key from database
+
+        //String[] projection = {AnimalContract.AnimalEntry.COLUMN_NAME_PATH};
 
         // Condition: where clause
         String selection = AnimalContract.AnimalEntry.COLUMN_NAME_TAG + " = ?";
@@ -183,6 +190,7 @@ public class AnimalDB {
         );
 
         while (cursor.moveToNext()) {
+            // Store id as key in disk
             path = cursor.getString(cursor.getColumnIndexOrThrow(AnimalContract.AnimalEntry.COLUMN_NAME_PATH));
 
             try {
@@ -190,6 +198,9 @@ public class AnimalDB {
                 image = new FileInputStream(path);
                 bitmap = BitmapFactory.decodeStream(image);
                 imagesOfAnimal.add(bitmap);
+
+                // Cache bitmap to both disk and cache memory
+                // Check if it is full?
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
