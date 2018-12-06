@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
+import android.provider.ContactsContract;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,6 +18,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
+import db.wpi.awheeler2.groupproject.Exception.DatabaseQueryException;
 import db.wpi.awheeler2.groupproject.Exception.ExternalStorageException;
 
 /* Run functions in the background thread to optimize performance!
@@ -25,6 +27,7 @@ public class AnimalDB {
     private AnimalDbHelper helper;
     private SQLiteDatabase db;
     private Context context;
+    ArrayList<Bitmap> imagesOfAnimal = new ArrayList<>();
 
     // Constructor
     public AnimalDB(Context context) {
@@ -41,6 +44,12 @@ public class AnimalDB {
 
         if (Environment.MEDIA_MOUNTED.equals(state)) {
             image = new File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), fileName);
+
+            /*
+            if (image.exists()) {
+                image.delete();
+            }
+            */
 
             if (!image.exists()) {
                 // Copy image
@@ -73,30 +82,36 @@ public class AnimalDB {
     *
     * Note: Should call this once - load images in asset folder to DB and external storage
     */
-    public void saveImagesFromAsset(String subdirectory) {
+    public void saveImagesFromAsset(String[] subdirectories) {
         String path = null;
         db = helper.getWritableDatabase();
 
         // Clear/create DB if exists
         helper.clearDb(db);
 
-        if (subdirectory == null) {
+        if (subdirectories == null) {
             return;
         }
 
-        // Loop through directory and process each image file
-        try {
-            String[] images = context.getAssets().list(subdirectory);
+        for (String subdirectory: subdirectories) {
+            // Loop through directory and process each image file
+            try {
+                String[] images = context.getAssets().list(subdirectory);
 
-            for (int i = 0; i < images.length; ++i) {
-                // Copy to internal/external storage
-                path = saveToStorage(subdirectory, images[i]);
+                if (images != null) {
+                    for (String image : images) {
+                        // Copy to internal/external storage
+                        path = saveToStorage(subdirectory, image);
 
-                // Save to DB
-                addToDB(subdirectory, path);
+                        // Save to DB
+                        if (addToDB(subdirectory, path) == -1) {
+                            throw new DatabaseQueryException("Unable to add to database");
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
@@ -117,7 +132,8 @@ public class AnimalDB {
         InputStream image;
         String path;
         Bitmap bitmap;
-        ArrayList<Bitmap> imagesOfAnimal = new ArrayList<>();
+
+        imagesOfAnimal.clear();
 
         db = helper.getReadableDatabase();
 
