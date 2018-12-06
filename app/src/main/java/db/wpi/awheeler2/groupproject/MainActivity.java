@@ -1,7 +1,9 @@
 package db.wpi.awheeler2.groupproject;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -21,6 +23,8 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import db.wpi.awheeler2.groupproject.database.AnimalDbHelper;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
@@ -49,7 +53,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
-
     }
 
     public void changeActivity(View v) {
@@ -134,7 +137,4 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mCurrentPhotoPath = image.getAbsolutePath();
         return image;
     }
-
-
-
 }
