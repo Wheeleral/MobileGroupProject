@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -19,6 +20,7 @@ import static android.provider.AlarmClock.EXTRA_MESSAGE;
 public class photoActivity extends AppCompatActivity {
     ArrayList<Bitmap> imagesOfAnimal;
     AnimalDB db;
+    String category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,14 @@ public class photoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_photo);
 
         //need to set the db here, but don't know how to with the context
+        db = new AnimalDB(this);
+
+        Intent intent = getIntent();
+        category = intent.getExtras().getString(EXTRA_MESSAGE);
+
+        //test category
+        TextView text = findViewById(R.id.testCategory);
+        text.setText(category);
     }
 
     public void changeActivityMain(View v) {
@@ -34,7 +44,7 @@ public class photoActivity extends AppCompatActivity {
     }
 
     //probably need to run this in an async task
-    public void populateScroll(String category){  //this will need to take in the category
+    public void populateScroll(){  //this will need to take in the category
         LinearLayout layout = findViewById(R.id.photoLayout);
         //grab the images in correct category
         imagesOfAnimal = db.getAllImagesOfAnimal(category);  //need to get category somehow
@@ -48,11 +58,11 @@ public class photoActivity extends AppCompatActivity {
             layout.addView(image);
 
             // need to set the imageView to the correct image from database (call the async task)
-            setPic(image, imagesOfAnimal[i]); //why is this mad?
+            setPic(image, imagesOfAnimal.get(i));
         }
     }
 
-    private void setPic(ImageView image, Bitmap bitmap) { //I feel like we should just be passing the filepath instead of the entire bitmap
+    private void setPic(ImageView image, Bitmap bitmap) { // I feel like we should just be passing the filepath instead of the entire bitmap
         // Get the dimensions of the View
         int targetW = image.getWidth();
         int targetH = image.getHeight();
