@@ -20,6 +20,24 @@ import java.util.ArrayList;
 import db.wpi.awheeler2.groupproject.Exception.DatabaseQueryException;
 import db.wpi.awheeler2.groupproject.Exception.ExternalStorageException;
 
+/**
+ *  Functions to use for UI implementation:
+ *  (1) void saveImagesFromAsset(String[] subdirectories)
+ *      Saving images in the subdirectories to external storage and database with corresponding tags
+ *      Input: a list of subdirectories in the assets folder - "cat", "dog"
+ *      Output: void
+
+ *  (2) long addToDB(String tagOfImage, String pathToImage)
+ *      Adding a new image from user to database
+ *      Input: a tag for the new image specifying what animal it is, a path to image in external storage
+ *      Output: id - primary key value of the new row
+ *
+ *  (3) ArrayList<Bitmap> getAllImagesOfAnimal(String animal)
+ *      Acquiring all the images with the given tag
+ *      Input: a tag
+ *      Output: an array list of bitmaps to display in ImageView for UI
+ */
+
 /* Options to optimize performance:
 ** (1) Run functions in the background thread
 ** (2) Store existing images in cache to optimize performance
