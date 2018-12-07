@@ -197,7 +197,7 @@ public class AnimalDB {
 
         cursor.close();
 
-        return imagesOfAnimal;
+        return imagesOfAnimal; //I feel like maybe this should be void and just update the field, or we shouldn't have a field to begin with
     }
 
     public void close() {
