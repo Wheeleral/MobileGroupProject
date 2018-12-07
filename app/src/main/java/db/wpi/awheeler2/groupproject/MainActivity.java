@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             // Another interface callback
     }
 
-    public void TakePhoto(View v) {
+    public void onClickPicture(View view){
         dispatchTakePictureIntent();
     }
 
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             // Continue only if the File was successfully created
             if (photoFile != null) {
                 Uri photoURI = FileProvider.getUriForFile(this,
-                        "wpi.awheeler2.myapplication.fileprovider",
+                        "db.wpi.awheeler2.groupproject.fileprovider",
                         photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
