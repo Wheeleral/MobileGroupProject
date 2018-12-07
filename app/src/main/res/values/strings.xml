@@ -6,4 +6,15 @@
         <item>Bird</item>
         <item>Rabbit</item>
     </string-array>
+    <!-- main activity -->
+    <string name="photo_instruction">Take a photo of an animal!</string>
+    <string name="photo_button">Take Photo</string>
+    <string name="save_button">Save Photo</string>
+    <string name="view_instruction">See Photos</string>
+    <string name="photo_activity_button">Go</string>
+
+    <!-- photo activity -->
+    <string name="main_activity_button">Go Back</string>
+    <string name="category"> </string>
+
 </resources>
