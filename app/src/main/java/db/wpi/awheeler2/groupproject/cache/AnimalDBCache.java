@@ -198,14 +198,18 @@ public class AnimalDBCache {
         String[] selectionArgs;
 
         if (imagesOfAnimal.size() > 0) {
-            ArrayList<String> idsOfImagesInCache = this.cache.getKeysOfAnimalInMemCache(animal);
+            //ArrayList<String> idsOfImagesInCache = this.cache.getKeysOfAnimalInMemCache(animal);
 
-            selection = AnimalContract.AnimalEntry.COLUMN_NAME_TAG + " NOT IN ?";
-            selectionArgs = new String[idsOfImagesInCache.size()];
+            return imagesOfAnimal;
 
+            //selection = AnimalContract.AnimalEntry.COLUMN_NAME_TAG + " NOT IN ?";
+            //selectionArgs = new String[idsOfImagesInCache.size()];
+
+            /*
             for (int i = 0; i < selectionArgs.length; ++i) {
                 selectionArgs[i] = idsOfImagesInCache.get(i);
             }
+            */
 
         } else { // No images of animal currently stored in cache - load all images
             // Condition: where clause
