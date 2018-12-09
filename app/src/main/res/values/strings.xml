@@ -12,6 +12,9 @@
     <string name="save_button">Save Photo to Database</string>
     <string name="view_instruction">See Photos of Any Animal Type</string>
     <string name="photo_activity_button">Go</string>
+    <string name="animal_guess">Animal Type</string>
+    <string name="device_switch">Off Device</string>
+    <string name="guess_button">Get Type</string>
 
     <!-- photo activity -->
     <string name="main_activity_button">Go Back</string>
