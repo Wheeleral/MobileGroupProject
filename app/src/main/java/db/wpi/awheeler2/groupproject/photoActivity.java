@@ -42,7 +42,7 @@ public class photoActivity extends AppCompatActivity {
 
         //test category
         TextView text = findViewById(R.id.testCategory);
-        text.setText(category);
+        text.setText(category.toUpperCase());
 
         //populate the scrollview
         populateScroll();
