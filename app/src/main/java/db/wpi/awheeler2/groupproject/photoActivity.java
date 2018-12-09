@@ -29,6 +29,7 @@ public class photoActivity extends AppCompatActivity {
 
         //need to set the db here, but don't know how to with the context
         db = new AnimalDB(this);
+        db.saveImagesFromAsset(new String[]{"cat", "dog"});
 
         Intent intent = getIntent();
         category = intent.getExtras().getString(EXTRA_MESSAGE);
@@ -51,6 +52,7 @@ public class photoActivity extends AppCompatActivity {
         LinearLayout layout = findViewById(R.id.photoLayout);
         //grab the images in correct category
         imagesOfAnimal = db.getAllImagesOfAnimal(category);  //need to get category somehow
+        //System.out.println("****Category is: " + category + "*****");
         for(int i = 0; i < imagesOfAnimal.size(); i++) {
             ImageView image = new ImageView(this);
             image.setLayoutParams(new android.view.ViewGroup.LayoutParams(80,60));
