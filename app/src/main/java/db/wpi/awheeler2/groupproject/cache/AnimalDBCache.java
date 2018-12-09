@@ -1,4 +1,4 @@
-package db.wpi.awheeler2.groupproject.database;
+package db.wpi.awheeler2.groupproject.cache;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -22,6 +22,8 @@ import java.util.HashMap;
 
 import db.wpi.awheeler2.groupproject.Exception.DatabaseQueryException;
 import db.wpi.awheeler2.groupproject.Exception.ExternalStorageException;
+import db.wpi.awheeler2.groupproject.database.AnimalContract;
+import db.wpi.awheeler2.groupproject.database.AnimalDbHelper;
 
 /**
  *  Functions to use for UI implementation:
@@ -51,14 +53,23 @@ public class AnimalDBCache {
     private SQLiteDatabase db;
     private Context context;
     private ArrayList<Bitmap> imagesOfAnimal;
-    //private AnimalCache mMemoryCache;
+    private Cache cache;
 
     // Constructor
     public AnimalDBCache(Context context) {
         this.context = context;
         this.helper = new AnimalDbHelper(context);
         this.imagesOfAnimal = new ArrayList<>();
-        //this.mMemoryCache = new AnimalCache();
+
+        // Get max available VM memory, exceeding this amount will throw an
+        // OutOfMemory exception. Stored in kilobytes as LruCache takes an
+        // int in its constructor.
+        final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
+
+        // Use 1/8th of the available memory for this memory cache.
+        final int cacheSize = maxMemory / 8;
+
+        this.cache = new Cache(cacheSize, cacheSize);
     }
 
     // Ensures that image is saved if not already
@@ -143,6 +154,7 @@ public class AnimalDBCache {
     }
 
     public long addToDB(String tagOfImage, String pathToImage) {
+        long id;
         // NOTE: tagOfImage may be the result of model
         db = helper.getWritableDatabase();
 
@@ -151,12 +163,20 @@ public class AnimalDBCache {
         values.put(AnimalContract.AnimalEntry.COLUMN_NAME_TAG, tagOfImage);
         values.put(AnimalContract.AnimalEntry.COLUMN_NAME_PATH, pathToImage);
 
+        id = db.insert(AnimalContract.AnimalEntry.TABLE_NAME, null, values);
+
+        if (id != -1) {
+            // Add to cache
+            this.cache.addBitmapToMemoryCache(tagOfImage, Long.toString(id), BitmapFactory.decodeFile(pathToImage));
+        }
+
         // Insert new row to DB
-        return db.insert(AnimalContract.AnimalEntry.TABLE_NAME, null, values);
+        return id;
     }
 
     public ArrayList<Bitmap> getAllImagesOfAnimal(String animal) {
         InputStream image;
+        String id;
         String path;
         Bitmap bitmap;
 
@@ -171,13 +191,28 @@ public class AnimalDBCache {
 
         // Check and add all bitmaps in disk cache/cache memory existing images with this tag is available
         // Do not load from animal with this id - key from database
+        imagesOfAnimal.addAll(this.cache.getAllBitmapsOfAnimalInMemoryCache(animal));
 
         //String[] projection = {AnimalContract.AnimalEntry.COLUMN_NAME_PATH};
+        String selection;
+        String[] selectionArgs;
 
-        // Condition: where clause
-        String selection = AnimalContract.AnimalEntry.COLUMN_NAME_TAG + " = ?";
-        // Values of where clause
-        String[] selectionArgs = {animal};
+        if (imagesOfAnimal.size() > 0) {
+            ArrayList<String> idsOfImagesInCache = this.cache.getKeysOfAnimalInMemCache(animal);
+
+            selection = AnimalContract.AnimalEntry.COLUMN_NAME_TAG + " NOT IN ?";
+            selectionArgs = new String[idsOfImagesInCache.size()];
+
+            for (int i = 0; i < selectionArgs.length; ++i) {
+                selectionArgs[i] = idsOfImagesInCache.get(i);
+            }
+
+        } else { // No images of animal currently stored in cache - load all images
+            // Condition: where clause
+            selection = AnimalContract.AnimalEntry.COLUMN_NAME_TAG + " = ?";
+            // Values of where clause
+            selectionArgs = new String[]{animal};
+        }
 
         Cursor cursor = db.query(
                 AnimalContract.AnimalEntry.TABLE_NAME,
@@ -191,6 +226,7 @@ public class AnimalDBCache {
 
         while (cursor.moveToNext()) {
             // Store id as key in disk
+            id = cursor.getString(cursor.getColumnIndexOrThrow(AnimalContract.AnimalEntry._ID));
             path = cursor.getString(cursor.getColumnIndexOrThrow(AnimalContract.AnimalEntry.COLUMN_NAME_PATH));
 
             try {
@@ -199,8 +235,9 @@ public class AnimalDBCache {
                 bitmap = BitmapFactory.decodeStream(image);
                 imagesOfAnimal.add(bitmap);
 
-                // Cache bitmap to both disk and cache memory
-                // Check if it is full?
+                // Add to cache
+                this.cache.addBitmapToMemoryCache(animal, id, bitmap);
+
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
