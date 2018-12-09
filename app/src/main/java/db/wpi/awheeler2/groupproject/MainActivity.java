@@ -32,11 +32,11 @@ import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    String selectedBreed =""; //Breed selected by spinner
+    String selectedBreed = ""; //Breed selected by spinner
     static final int REQUEST_IMAGE_CAPTURE = 1;
     String mCurrentPhotoPath;
     static final int REQUEST_TAKE_PHOTO = 1;
-    Boolean offDevice = false; // if off device infrence is wanted
+    Boolean offDevice = false; // if off device inference is wanted
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,12 +78,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-            // Get what is selected in the spinner
+        // Get what is selected in the spinner
         selectedBreed = parent.getItemAtPosition(pos).toString().toLowerCase();
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
-            // Another interface callback
+        // Another interface callback
     }
 
     public void onClickPicture(View view){
@@ -118,8 +118,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             File photoFile = null;
             try {
                 photoFile = createImageFile();
-            } catch (IOException ex) {
-            }
+            } catch (IOException ex) {}
             // Continue only if the File was successfully created
             if (photoFile != null) {
                 Uri photoURI = FileProvider.getUriForFile(this,
@@ -155,11 +154,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
-    public void setAnimalTypeText(String type ){ //set text field with type once inference is done
+    public void setAnimalTypeText(String type){ //set text field with type once inference is done
         TextView animalType = findViewById(R.id.typeText);
-        animalType.setText("Type: " +type);
+        animalType.setText("Type: " + type);
     }
-
-
-
 }
