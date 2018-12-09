@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
+  </component>
   <component name="CMakeSettings">
     <configurations>
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
@@ -31,8 +34,8 @@
       <file leaf-file-name="AnimalDBCache.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/AnimalDBCache.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1005">
-              <caret line="176" column="46" selection-start-line="176" selection-start-column="46" selection-end-line="176" selection-end-column="46" />
+            <state relative-caret-position="406">
+              <caret line="218" column="27" lean-forward="true" selection-start-line="218" selection-start-column="27" selection-end-line="218" selection-end-column="27" />
               <folding>
                 <element signature="e#8127#8128#0" expanded="true" />
                 <element signature="e#8162#8163#0" expanded="true" />
@@ -45,7 +48,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/AnimalCache.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
-              <caret line="31" column="34" lean-forward="true" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
+              <caret line="31" column="34" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
               <folding>
                 <element signature="e#555#556#0" expanded="true" />
                 <element signature="e#585#586#0" expanded="true" />
@@ -57,9 +60,10 @@
       <file leaf-file-name="Cache.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/Cache.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="-121">
+              <caret line="25" column="41" lean-forward="true" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="e#594#595#0" expanded="true" />
                 <element signature="e#642#643#0" expanded="true" />
               </folding>
@@ -2347,8 +2351,8 @@
         <option value="$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/database/AnimalDB.java" />
         <option value="$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/BitmapCache.java" />
         <option value="$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/AnimalCache.java" />
-        <option value="$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/Cache.java" />
         <option value="$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/AnimalDBCache.java" />
+        <option value="$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/Cache.java" />
       </list>
     </option>
   </component>
@@ -2537,26 +2541,36 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="12" weight="0.32905984" />
-      <window_info anchor="bottom" id="Android Profiler" order="5" />
+      <window_info anchor="bottom" id="Android Profiler" order="5" weight="0.32905984" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="8" weight="0.32905984" />
+      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.32905984" />
       <window_info anchor="bottom" id="Version Control" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.32905984" />
       <window_info anchor="bottom" id="Logcat" order="0" weight="0.32905984" />
       <window_info id="Captures" order="2" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="0" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.15973154" />
-      <window_info anchor="bottom" id="Build" order="3" visible="true" weight="0.32905984" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.15973154" />
+      <window_info anchor="bottom" id="Build" order="3" weight="0.32905984" />
+      <window_info anchor="bottom" id="Find" order="7" />
       <window_info anchor="right" id="Gradle" order="1" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Theme Preview" order="2" />
@@ -2567,7 +2581,6 @@
       <window_info anchor="right" id="Commander" order="5" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="7" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="6" />
     </layout>
@@ -2612,7 +2625,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/AnimalCache.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
-          <caret line="31" column="34" lean-forward="true" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
+          <caret line="31" column="34" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
           <folding>
             <element signature="e#555#556#0" expanded="true" />
             <element signature="e#585#586#0" expanded="true" />
@@ -2622,9 +2635,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/Cache.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="-121">
+          <caret line="25" column="41" lean-forward="true" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="e#594#595#0" expanded="true" />
             <element signature="e#642#643#0" expanded="true" />
           </folding>
@@ -2633,8 +2647,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/AnimalDBCache.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1005">
-          <caret line="176" column="46" selection-start-line="176" selection-start-column="46" selection-end-line="176" selection-end-column="46" />
+        <state relative-caret-position="406">
+          <caret line="218" column="27" lean-forward="true" selection-start-line="218" selection-start-column="27" selection-end-line="218" selection-end-column="27" />
           <folding>
             <element signature="e#8127#8128#0" expanded="true" />
             <element signature="e#8162#8163#0" expanded="true" />

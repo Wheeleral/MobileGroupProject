@@ -14,10 +14,15 @@ public class Cache {
     }
 
     public void addBitmapToMemoryCache(String animal, String key, Bitmap bitmap) {
+        ArrayList<String> keysToAnimalBitmaps = new ArrayList<>();
+
         if (getBitmapFromMemCache(animal) == null) {
             this.bitmapCache.put(key, bitmap);
 
-            ArrayList<String> keysToAnimalBitmaps = new ArrayList<>(getKeysOfAnimalInMemCache(animal));
+            if (getKeysOfAnimalInMemCache(animal) == null) {
+                keysToAnimalBitmaps.addAll(getKeysOfAnimalInMemCache(animal));
+            }
+
             keysToAnimalBitmaps.add(key);
 
             this.animalCache.put(animal, keysToAnimalBitmaps);
