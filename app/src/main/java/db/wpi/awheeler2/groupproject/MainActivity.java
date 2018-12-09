@@ -15,8 +15,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.io.File;
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     static final int REQUEST_IMAGE_CAPTURE = 1;
     String mCurrentPhotoPath;
     static final int REQUEST_TAKE_PHOTO = 1;
+    Boolean offDevice =false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         SetUpSpinner();
         Spinner spinner = findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
+
+        Switch offDeviceSwitch = findViewById(R.id.offDevice);
+        offDeviceSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // do something, the isChecked will be
+                // true if the switch is in the On position
+                offDevice = isChecked;
+            }
+        });
+
     }
 
     public void SetUpSpinner(){
@@ -137,8 +150,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         return image;
     }
 
-    public void GetModelType() {
+    public void GetType(View view) {
+        if (offDevice) { //run model off device
 
+        }
+        else { //run on device
+
+        }
     }
+
+    public void setAnimalTypeText(String type ){ //set text field with type once inference is done
+        TextView animalType = findViewById(R.id.typeText);
+        animalType.setText("Animal Type: " +type);
+    }
+
+
 
 }
