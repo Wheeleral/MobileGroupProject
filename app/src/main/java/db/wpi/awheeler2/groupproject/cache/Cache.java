@@ -19,7 +19,7 @@ public class Cache {
         if (getBitmapFromMemCache(animal) == null) {
             this.bitmapCache.put(key, bitmap);
 
-            if (getKeysOfAnimalInMemCache(animal) == null) {
+            if (getKeysOfAnimalInMemCache(animal) != null) {
                 keysToAnimalBitmaps.addAll(getKeysOfAnimalInMemCache(animal));
             }
 
@@ -33,10 +33,15 @@ public class Cache {
         return this.bitmapCache.get(key);
     }
 
+
+    /* Call this function after getAllBitmapsOfAnimalInMemoryCache
+     */
     public ArrayList<String> getKeysOfAnimalInMemCache(String animal) {
         return this.animalCache.get(animal);
     }
 
+    /* Update AnimalCache as well!
+     */
     public  ArrayList<Bitmap> getAllBitmapsOfAnimalInMemoryCache(String animal) {
         ArrayList<String> keys = getKeysOfAnimalInMemCache(animal);
         ArrayList<Bitmap> bitmapsOfAnimalInCache = new ArrayList<>();
@@ -55,5 +60,21 @@ public class Cache {
         }
 
         return bitmapsOfAnimalInCache;
+    }
+
+    public ArrayList<String> getValuesInAnimalCache(String animal) {
+        return this.animalCache.get(animal);
+    }
+
+    public Bitmap getValuesInBitmapCache(String id) {
+        return this.bitmapCache.get(id);
+    }
+
+    public BitmapCache getBitmapCache() {
+        return this.bitmapCache;
+    }
+
+    public AnimalCache getAnimalCache() {
+        return this.animalCache;
     }
 }

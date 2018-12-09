@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 import db.wpi.awheeler2.groupproject.Exception.DatabaseQueryException;
 import db.wpi.awheeler2.groupproject.Exception.ExternalStorageException;
+import db.wpi.awheeler2.groupproject.cache.CacheTester;
 
 /**
  *  Functions to use for UI implementation:
@@ -47,7 +48,8 @@ public class AnimalDB {
     private AnimalDbHelper helper;
     private SQLiteDatabase db;
     private Context context;
-    ArrayList<Bitmap> imagesOfAnimal = new ArrayList<>();
+    private ArrayList<Bitmap> imagesOfAnimal = new ArrayList<>();
+    private CacheTester testCache;
 
     // Constructor
     public AnimalDB(Context context) {
@@ -198,6 +200,12 @@ public class AnimalDB {
         cursor.close();
 
         return imagesOfAnimal; //I feel like maybe this should be void and just update the field, or we shouldn't have a field to begin with
+    }
+
+    /* After all default images are preloaded */
+    public void test() {
+        this.testCache = new CacheTester(this.getAllImagesOfAnimal("cat"), getAllImagesOfAnimal("dog"));
+        this.testCache.runTests();
     }
 
     public void close() {
