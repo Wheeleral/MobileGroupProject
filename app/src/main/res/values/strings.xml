@@ -9,8 +9,8 @@
     <!-- main activity -->
     <string name="photo_instruction">Take a photo of an animal!</string>
     <string name="photo_button">Take Photo</string>
-    <string name="save_button">Save Photo</string>
-    <string name="view_instruction">See Photos</string>
+    <string name="save_button">Save Photo to Database</string>
+    <string name="view_instruction">See Photos of Any Animal Type</string>
     <string name="photo_activity_button">Go</string>
 
     <!-- photo activity -->

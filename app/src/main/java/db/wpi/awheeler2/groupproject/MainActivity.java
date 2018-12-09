@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
             // An item was selected. You can retrieve the selected item using
             // parent.getItemAtPosition(pos)
-        selectedBreed = parent.getItemAtPosition(pos).toString();
+        selectedBreed = parent.getItemAtPosition(pos).toString().toLowerCase();
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
@@ -136,4 +136,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mCurrentPhotoPath = image.getAbsolutePath();
         return image;
     }
+
+    public void GetModelType() {
+
+    }
+
 }
