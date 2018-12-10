@@ -75,8 +75,6 @@ public class CacheTester {
         }
 
         // Calling previous function should also update AnimalCache as well
-        // Animal cache does not update - still have old version of all ids in BitmapCache
-        // In animal cache:
         if (this.cache.getValuesInAnimalCache(animal).size() > 0) {
             throw new AssertionError();
         }

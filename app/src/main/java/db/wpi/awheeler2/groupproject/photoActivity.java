@@ -16,13 +16,15 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import db.wpi.awheeler2.groupproject.cache.AnimalDBCache;
 import db.wpi.awheeler2.groupproject.database.AnimalDB;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class photoActivity extends AppCompatActivity {
     ArrayList<Bitmap> imagesOfAnimal;
-    AnimalDB db;
+    //AnimalDB db;
+    AnimalDBCache db;
     String category;
 
     @Override
@@ -30,13 +32,14 @@ public class photoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo);
 
+        // TODO: We need to be able to pass this database object between activities - currently cache is reloading all data every time the activity is created
         //need to set the db here, but don't know how to with the context
-        db = new AnimalDB(this);
+        //db = new AnimalDB(this);
+        db = new AnimalDBCache(this);
         db.saveImagesFromAsset(new String[]{"cat", "dog"});
-        //db.test();
 
         //for testing purposes
-        db.saveImagesFromAsset(new String[]{"cat", "dog"});
+        //db.saveImagesFromAsset(new String[]{"cat", "dog"});
 
         Intent intent = getIntent();
         category = intent.getExtras().getString(EXTRA_MESSAGE);

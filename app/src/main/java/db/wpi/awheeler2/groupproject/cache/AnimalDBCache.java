@@ -18,10 +18,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import db.wpi.awheeler2.groupproject.Exception.DatabaseQueryException;
 import db.wpi.awheeler2.groupproject.Exception.ExternalStorageException;
+import db.wpi.awheeler2.groupproject.MainActivity;
 import db.wpi.awheeler2.groupproject.database.AnimalContract;
 import db.wpi.awheeler2.groupproject.database.AnimalDbHelper;
 
@@ -191,29 +193,39 @@ public class AnimalDBCache {
 
         // Check and add all bitmaps in disk cache/cache memory existing images with this tag is available
         // Do not load from animal with this id - key from database
-        imagesOfAnimal.addAll(this.cache.getAllBitmapsOfAnimalInMemoryCache(animal));
+        if (this.cache.getAllBitmapsOfAnimalInMemoryCache(animal) != null) {
+            imagesOfAnimal.addAll(this.cache.getAllBitmapsOfAnimalInMemoryCache(animal));
+        }
 
         //String[] projection = {AnimalContract.AnimalEntry.COLUMN_NAME_PATH};
-        String selection;
+        StringBuilder selection;
         String[] selectionArgs;
 
         if (imagesOfAnimal.size() > 0) {
-            //ArrayList<String> idsOfImagesInCache = this.cache.getKeysOfAnimalInMemCache(animal);
+            System.out.println("********** Images are stored in the cache! **********");
+            /*
+            ArrayList<String> idsOfImagesInCache = this.cache.getKeysOfAnimalInMemCache(animal);
+
+            // return imagesOfAnimal;
+            String[] num_args = new String[idsOfImagesInCache.size()];
+            Arrays.fill(num_args, "?");
+
+            selection = new StringBuilder(AnimalContract.AnimalEntry.COLUMN_NAME_TAG + " type NOT IN " + Arrays.toString(num_args) + "");
+
+            System.out.println("********** SQLite query is: " + selection);
+
+            selectionArgs = new String[idsOfImagesInCache.size()];
+            selectionArgs = idsOfImagesInCache.toArray(selectionArgs);
+
+            System.out.println("********** Selection Arguments: " + Arrays.toString(selectionArgs));
+            */
 
             return imagesOfAnimal;
 
-            //selection = AnimalContract.AnimalEntry.COLUMN_NAME_TAG + " NOT IN ?";
-            //selectionArgs = new String[idsOfImagesInCache.size()];
-
-            /*
-            for (int i = 0; i < selectionArgs.length; ++i) {
-                selectionArgs[i] = idsOfImagesInCache.get(i);
-            }
-            */
-
         } else { // No images of animal currently stored in cache - load all images
+            System.out.println("********** Load from DATABASE! **********");
             // Condition: where clause
-            selection = AnimalContract.AnimalEntry.COLUMN_NAME_TAG + " = ?";
+            selection = new StringBuilder(AnimalContract.AnimalEntry.COLUMN_NAME_TAG + " = ?");
             // Values of where clause
             selectionArgs = new String[]{animal};
         }
@@ -221,7 +233,7 @@ public class AnimalDBCache {
         Cursor cursor = db.query(
                 AnimalContract.AnimalEntry.TABLE_NAME,
                 projection,
-                selection,
+                selection.toString(),
                 selectionArgs,
                 null,
                 null,

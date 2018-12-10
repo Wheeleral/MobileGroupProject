@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import db.wpi.awheeler2.groupproject.cache.AnimalDBCache;
 import db.wpi.awheeler2.groupproject.database.AnimalDbHelper;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
@@ -56,7 +57,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 offDevice = isChecked;
             }
         });
-
     }
 
     public void SetUpSpinner(){

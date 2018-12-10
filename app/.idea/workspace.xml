@@ -39,8 +39,12 @@
       <file leaf-file-name="photoActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/photoActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="42" column="25" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
+            <state relative-caret-position="119">
+              <caret line="34" column="158" selection-start-line="34" selection-start-column="158" selection-end-line="34" selection-end-column="158" />
+              <folding>
+                <element signature="e#2710#2711#0" expanded="true" />
+                <element signature="e#2754#2755#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -60,7 +64,9 @@
       <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_main.xml">
           <provider editor-type-id="text-editor">
-            <state />
+            <state relative-caret-position="-1823">
+              <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+            </state>
           </provider>
           <provider selected="true" editor-type-id="android-designer2">
             <state />
@@ -70,60 +76,8 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1321">
-              <caret line="41" column="18" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
-              <folding>
-                <element signature="e#2768#2769#0" expanded="true" />
-                <element signature="e#2811#2812#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AnimalCache.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/AnimalCache.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="28" column="38" lean-forward="true" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AnimalDB.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/database/AnimalDB.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="202" column="5" lean-forward="true" selection-start-line="202" selection-start-column="5" selection-end-line="202" selection-end-column="5" />
-              <folding>
-                <element signature="e#7105#7106#0" expanded="true" />
-                <element signature="e#7140#7141#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Cache.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/Cache.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="62" column="5" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
-              <folding>
-                <element signature="e#2021#2022#0" expanded="true" />
-                <element signature="e#2068#2069#0" expanded="true" />
-                <element signature="e#2111#2112#0" expanded="true" />
-                <element signature="e#2150#2151#0" expanded="true" />
-                <element signature="e#2193#2194#0" expanded="true" />
-                <element signature="e#2232#2233#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BitmapCache.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/BitmapCache.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            <state relative-caret-position="-1252">
+              <caret line="54" column="40" selection-start-line="54" selection-start-column="40" selection-end-line="54" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -131,8 +85,12 @@
       <file leaf-file-name="AnimalDBCache.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/AnimalDBCache.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="204" column="36" lean-forward="true" selection-start-line="204" selection-start-column="36" selection-end-line="204" selection-end-column="36" />
+            <state relative-caret-position="-409">
+              <caret line="214" column="15" selection-start-line="214" selection-start-column="15" selection-end-line="214" selection-end-column="15" />
+              <folding>
+                <element signature="e#9542#9543#0" expanded="true" />
+                <element signature="e#9577#9578#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -140,8 +98,8 @@
       <file leaf-file-name="CacheTester.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/CacheTester.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="100" column="39" lean-forward="true" selection-start-line="100" selection-start-column="39" selection-end-line="100" selection-end-column="39" />
+            <state relative-caret-position="1768">
+              <caret line="104" column="5" selection-start-line="104" selection-start-column="5" selection-end-line="104" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -2419,9 +2377,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/database/AnimalDB.java" />
         <option value="$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/Cache.java" />
+        <option value="$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/database/AnimalDB.java" />
         <option value="$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/CacheTester.java" />
+        <option value="$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/MainActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/AnimalDBCache.java" />
         <option value="$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/photoActivity.java" />
       </list>
     </option>
@@ -2650,14 +2610,14 @@
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="right" id="Preview" />
-      <window_info anchor="bottom" id="Run" order="8" visible="true" weight="0.43162394" />
+      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.19373219" />
       <window_info anchor="bottom" id="Version Control" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.32905984" />
       <window_info anchor="bottom" id="Logcat" order="0" weight="0.32905984" />
       <window_info id="Captures" order="2" weight="0.24966443" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="0" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.23020135" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.23020135" />
       <window_info anchor="bottom" id="Build" order="3" weight="0.32905984" />
       <window_info anchor="right" id="Gradle" order="1" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
@@ -2678,12 +2638,12 @@
       <window_info id="Designer" order="0" />
       <window_info id="Build Variants" order="4" side_tool="true" />
       <window_info id="Image Layers" order="1" />
-      <window_info anchor="bottom" id="Run" order="8" visible="true" weight="0.32905984" />
+      <window_info anchor="bottom" id="Run" order="8" visible="true" weight="0.43162394" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
-      <window_info anchor="bottom" id="Android Profiler" order="5" />
+      <window_info anchor="bottom" id="Android Profiler" order="5" weight="0.32905984" />
       <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info id="Captures" order="2" weight="0.25" />
+      <window_info id="Captures" order="2" weight="0.24966443" />
       <window_info id="Capture Tool" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Commander" order="6" weight="0.4" />
@@ -2739,58 +2699,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_main.xml">
       <provider editor-type-id="text-editor">
-        <state />
+        <state relative-caret-position="-1823">
+          <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+        </state>
       </provider>
       <provider selected="true" editor-type-id="android-designer2">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1321">
-          <caret line="41" column="18" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
-          <folding>
-            <element signature="e#2768#2769#0" expanded="true" />
-            <element signature="e#2811#2812#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/CacheTester.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="100" column="39" lean-forward="true" selection-start-line="100" selection-start-column="39" selection-end-line="100" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/AnimalCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="28" column="38" lean-forward="true" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/AnimalDBCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="204" column="36" lean-forward="true" selection-start-line="204" selection-start-column="36" selection-end-line="204" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/BitmapCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/Cache.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="62" column="5" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
+        <state relative-caret-position="1037">
+          <caret line="65" column="37" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="37" />
           <folding>
             <element signature="e#2021#2022#0" expanded="true" />
             <element signature="e#2068#2069#0" expanded="true" />
@@ -2802,10 +2722,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/CacheTester.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1768">
+          <caret line="104" column="5" selection-start-line="104" selection-start-column="5" selection-end-line="104" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/BitmapCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/database/AnimalDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="202" column="5" lean-forward="true" selection-start-line="202" selection-start-column="5" selection-end-line="202" selection-end-column="5" />
+        <state relative-caret-position="237">
+          <caret line="191" column="43" selection-start-line="191" selection-start-column="43" selection-end-line="191" selection-end-column="43" />
           <folding>
             <element signature="e#7105#7106#0" expanded="true" />
             <element signature="e#7140#7141#0" expanded="true" />
@@ -2813,10 +2750,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/AnimalCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1252">
+          <caret line="54" column="40" selection-start-line="54" selection-start-column="40" selection-end-line="54" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/cache/AnimalDBCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-409">
+          <caret line="214" column="15" selection-start-line="214" selection-start-column="15" selection-end-line="214" selection-end-column="15" />
+          <folding>
+            <element signature="e#9542#9543#0" expanded="true" />
+            <element signature="e#9577#9578#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/db/wpi/awheeler2/groupproject/photoActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="42" column="25" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
+        <state relative-caret-position="119">
+          <caret line="34" column="158" selection-start-line="34" selection-start-column="158" selection-end-line="34" selection-end-column="158" />
+          <folding>
+            <element signature="e#2710#2711#0" expanded="true" />
+            <element signature="e#2754#2755#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
