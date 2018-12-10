@@ -39,8 +39,7 @@ public class CacheTester {
     private void addBitmap(Bitmap bitmap) {
         this.cache.addBitmapToMemoryCache("cat", "cat1", bitmap);
 
-        if (this.cache.getValuesInAnimalCache("cat").size() == 1 && this.cache.getValuesInAnimalCache("cat").get(0).equals("cat1")) {
-            System.out.println("AddBitmap: size " + this.cache.getValuesInAnimalCache("cat").size() + " element " + this.cache.getValuesInAnimalCache("cat").get(0));
+        if (this.cache.getValuesInAnimalCache("cat").size() != 1 || !this.cache.getValuesInAnimalCache("cat").get(0).equals("cat1")) {
             throw new AssertionError();
         }
 
@@ -60,7 +59,7 @@ public class CacheTester {
 
         // Animal cache does not update - still have old version of all ids in BitmapCache
 
-        if (this.cache.getValuesInAnimalCache(animal).size() == 1 && this.cache.getValuesInAnimalCache("cat").get(0).equals("cat1")) {
+        if (this.cache.getValuesInAnimalCache(animal).size() != 1 || !this.cache.getValuesInAnimalCache("cat").get(0).equals("cat1")) {
             throw new AssertionError();
         }
 
@@ -78,7 +77,7 @@ public class CacheTester {
         // Calling previous function should also update AnimalCache as well
         // Animal cache does not update - still have old version of all ids in BitmapCache
         // In animal cache:
-        if (this.cache.getValuesInAnimalCache(animal).size() == 0) {
+        if (this.cache.getValuesInAnimalCache(animal).size() > 0) {
             throw new AssertionError();
         }
     }
@@ -105,6 +104,5 @@ public class CacheTester {
         if (this.cache.getValuesInAnimalCache("dog").size() != 1) {
             throw new AssertionError();
         }
-        addBitmap(dogs.get(0));
     }
 }

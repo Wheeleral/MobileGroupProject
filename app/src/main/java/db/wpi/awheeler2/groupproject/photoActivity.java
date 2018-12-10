@@ -30,9 +30,8 @@ public class photoActivity extends AppCompatActivity {
         //need to set the db here, but don't know how to with the context
         db = new AnimalDB(this);
         db.saveImagesFromAsset(new String[]{"cat", "dog"});
-        db.test();
+        //db.test();
 
-        /*
         Intent intent = getIntent();
         category = intent.getExtras().getString(EXTRA_MESSAGE);
 
@@ -42,7 +41,6 @@ public class photoActivity extends AppCompatActivity {
 
         //populate the scrollview
         populateScroll();
-        */
     }
 
     public void changeActivityMain(View v) {
