@@ -15,8 +15,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.io.File;
@@ -30,18 +32,31 @@ import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    String selectedBreed ="";
+    String selectedBreed = ""; //Breed selected by spinner
     static final int REQUEST_IMAGE_CAPTURE = 1;
     String mCurrentPhotoPath;
     static final int REQUEST_TAKE_PHOTO = 1;
+    Boolean offDevice = false; // if off device inference is wanted
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SetUpSpinner();
+        //Spinner Setup
+        SetUpSpinner();//Get spinner Populated
         Spinner spinner = findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
+
+        //Switch Setup
+        Switch offDeviceSwitch = findViewById(R.id.offDevice);
+        offDeviceSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // do something, the isChecked will be
+                // true if the switch is in the On position
+                offDevice = isChecked;
+            }
+        });
+
     }
 
     public void SetUpSpinner(){
@@ -55,22 +70,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         spinner.setAdapter(adapter);
     }
 
-    public void changeActivity(View v) {
+    public void changeActivity(View v) {//Switch to photo activity
         Intent intent = new Intent(this, photoActivity.class);
-        //EditText editText = (EditText) findViewById(R.id.editText);
         String message = selectedBreed;
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-            // An item was selected. You can retrieve the selected item using
-            // parent.getItemAtPosition(pos)
+        // Get what is selected in the spinner
         selectedBreed = parent.getItemAtPosition(pos).toString().toLowerCase();
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
-            // Another interface callback
+        // Another interface callback
     }
 
     public void onClickPicture(View view){
@@ -82,8 +95,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         ImageView pictureView = findViewById(R.id.imagePreview);
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             //Bundle extras = data.getExtras();
-            //Bitmap imageBitmap = (Bitmap) extras.get("data");
-
             int targetW = pictureView.getWidth();
             int targetH = pictureView.getHeight();
             BitmapFactory.Options bmOptions = new BitmapFactory.Options();
@@ -97,9 +108,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
             pictureView.setImageBitmap(bitmap);
-
-            //TextView path = findViewById(R.id.cameraPath);
-            //path.setText("File: "+ mCurrentPhotoPath);
         }
     }
 
@@ -110,8 +118,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             File photoFile = null;
             try {
                 photoFile = createImageFile();
-            } catch (IOException ex) {
-            }
+            } catch (IOException ex) {}
             // Continue only if the File was successfully created
             if (photoFile != null) {
                 Uri photoURI = FileProvider.getUriForFile(this,
@@ -137,8 +144,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         return image;
     }
 
-    public void GetModelType() {
+    //Deep inference code
+    public void GetType(View view) {
+        if (offDevice) { //run model off device
 
+        }
+        else { //run on device
+
+        }
     }
 
+    public void setAnimalTypeText(String type){ //set text field with type once inference is done
+        TextView animalType = findViewById(R.id.typeText);
+        animalType.setText("Type: " + type);
+    }
 }
