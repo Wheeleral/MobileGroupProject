@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
+import android.os.Parcelable;
 import android.provider.BaseColumns;
 import android.util.LruCache;
 
@@ -55,13 +56,16 @@ public class AnimalDBCache {
     private SQLiteDatabase db;
     private Context context;
     private ArrayList<Bitmap> imagesOfAnimal;
+    private ArrayList<Bitmap> imagesCached;
     private Cache cache;
+    private static AnimalDBCache instance;
 
     // Constructor
-    public AnimalDBCache(Context context) {
+    private AnimalDBCache(Context context) {
         this.context = context;
         this.helper = new AnimalDbHelper(context);
         this.imagesOfAnimal = new ArrayList<>();
+        this.imagesCached = new ArrayList<>();
 
         // Get max available VM memory, exceeding this amount will throw an
         // OutOfMemory exception. Stored in kilobytes as LruCache takes an
@@ -75,7 +79,7 @@ public class AnimalDBCache {
     }
 
     // Ensures that image is saved if not already
-    public String saveToStorage(String subdirectory, String fileName) throws ExternalStorageException, IOException {
+    private String saveToStorage(String subdirectory, String fileName) throws ExternalStorageException, IOException {
         File image;
 
         // Checks if external storage exists
@@ -183,6 +187,7 @@ public class AnimalDBCache {
         Bitmap bitmap;
 
         imagesOfAnimal.clear();
+        imagesCached.clear();
 
         db = helper.getReadableDatabase();
 
@@ -194,14 +199,14 @@ public class AnimalDBCache {
         // Check and add all bitmaps in disk cache/cache memory existing images with this tag is available
         // Do not load from animal with this id - key from database
         if (this.cache.getAllBitmapsOfAnimalInMemoryCache(animal) != null) {
-            imagesOfAnimal.addAll(this.cache.getAllBitmapsOfAnimalInMemoryCache(animal));
+            imagesCached.addAll(this.cache.getAllBitmapsOfAnimalInMemoryCache(animal));
         }
 
         //String[] projection = {AnimalContract.AnimalEntry.COLUMN_NAME_PATH};
         StringBuilder selection;
         String[] selectionArgs;
 
-        if (imagesOfAnimal.size() > 0) {
+        if (imagesCached.size() > 0) {
             System.out.println("********** Images are stored in the cache! **********");
             /*
             ArrayList<String> idsOfImagesInCache = this.cache.getKeysOfAnimalInMemCache(animal);
@@ -220,7 +225,7 @@ public class AnimalDBCache {
             System.out.println("********** Selection Arguments: " + Arrays.toString(selectionArgs));
             */
 
-            return imagesOfAnimal;
+            return imagesCached;
 
         } else { // No images of animal currently stored in cache - load all images
             System.out.println("********** Load from DATABASE! **********");
@@ -261,10 +266,23 @@ public class AnimalDBCache {
 
         cursor.close();
 
+        imagesOfAnimal.addAll(imagesCached);
+
         return imagesOfAnimal;
     }
 
     public void close() {
         this.helper.close();
+    }
+
+    public static AnimalDBCache getInstance(Context context) {
+        if (instance == null) {
+            instance = new AnimalDBCache(context);
+
+            // Load data
+            instance.saveImagesFromAsset(new String[]{"cat", "dog"});
+        }
+
+        return instance;
     }
 }
