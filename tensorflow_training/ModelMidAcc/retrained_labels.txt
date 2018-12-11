@@ -1,0 +1,10 @@
+bear
+bird
+bunny
+cat
+dog
+fish
+hamster
+person
+pig
+squirrel
