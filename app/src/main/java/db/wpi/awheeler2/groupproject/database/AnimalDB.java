@@ -50,9 +50,10 @@ public class AnimalDB {
     private Context context;
     private ArrayList<Bitmap> imagesOfAnimal = new ArrayList<>();
     private CacheTester testCache;
+    private static AnimalDB instance;
 
     // Constructor
-    public AnimalDB(Context context) {
+    private AnimalDB(Context context) {
         this.context = context;
         this.helper = new AnimalDbHelper(context);
     }
@@ -210,5 +211,16 @@ public class AnimalDB {
 
     public void close() {
         this.helper.close();
+    }
+
+    public static AnimalDB getInstance(Context context) {
+        if (instance == null) {
+            instance = new AnimalDB(context);
+
+            // Load data
+            instance.saveImagesFromAsset(new String[]{"cat", "dog"});
+        }
+
+        return instance;
     }
 }
