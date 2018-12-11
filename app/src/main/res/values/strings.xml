@@ -1,10 +1,16 @@
 <resources>
     <string name="app_name">GroupProject</string>
     <string-array name="animal_array">
+        <item>Bear</item>
+        <item>Bird</item>
+        <item>Bunny</item>
         <item>Cat</item>
         <item>Dog</item>
-        <item>Bird</item>
-        <item>Rabbit</item>
+        <item>Fish</item>
+        <item>Hamster</item>
+        <item>Person</item>
+        <item>Pig</item>
+        <item>Squirll</item>
     </string-array>
     <!-- main activity -->
     <string name="photo_instruction">Take a photo of an animal!</string>
