@@ -123,8 +123,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         spinner.setAdapter(adapter);
     }
 
-    public void addToDB(View v) {
-        db.addToDB(breedChosen.toLowerCase(),mCurrentPhotoPath);
+    public void addToDB(View v) {//Send image to DB
+        db.addToDB(breedChosen.toLowerCase(), mCurrentPhotoPath);
     }
 
     public void changeActivity(View v) {//Switch to photo activity
@@ -202,7 +202,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         return image;
     }
 
-
     //Deep inference code
     public void GetType(View view) throws FileNotFoundException {
         if (offDevice) { //run model off device
@@ -213,37 +212,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
-    public void setAnimalTypeText(String type){ //set text field with type once inference is done
-        TextView animalType = findViewById(R.id.typeText);
-        animalType.setText("Type: " + type);
-    }
     public void switchPhoto() throws FileNotFoundException {
         Context context=getApplicationContext();
-
         labels =  context.getResources().getStringArray(R.array.animal_array);
-        //InputStream image_stream =null;
-        //InputStream image_stream =null;
-        //ImageView imageView = findViewById(R.id.photo);
-        //Random randomImageGenerator = new Random();
-        //int num = randomImageGenerator.nextInt(11)+1;
-        //try {
-         //   image_stream = getAssets().open(mCurrentPhotoPath);
-        //} catch (Exception e ){}
-
-        //ImageView img = findViewById(R.id.imagePreview);
-
-
-        //Bitmap image = BitmapFactory.decodeStream(imageTaken);
-
         Bitmap resized  = imageTaken.createScaledBitmap(imageTaken, 224, 224, false); //filter?
         convertBitmapToByteBuffer(resized);
-       // new InferenceAsync().execute("");
+
+        // new InferenceAsync().execute("");
 
         long start = SystemClock.uptimeMillis();
-
         tflite.run(imgData, labelProbArray);
-
-
         long end = SystemClock.uptimeMillis();
         TextView guess = findViewById(R.id.typeText);
         int index = 0;
@@ -255,14 +233,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         }
         String bestguess = labels[index];
-        guess.setText(bestguess + " : " + max);
+        guess.setText("Type: " + bestguess + " : " + max);
         breedChosen = bestguess;
 
         //TextView time = findViewById(R.id.timeResult);
         //long totaltime = end - start;
         //time.setText(totaltime + "s");
-
-
     }
 
     private MappedByteBuffer loadModelFile() throws IOException {
@@ -299,7 +275,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         imgData.putFloat((((pixelValue >> 8) & 0xFF) - IMAGE_MEAN) / IMAGE_STD);
         imgData.putFloat(((pixelValue & 0xFF) - IMAGE_MEAN) / IMAGE_STD);
     }
-    int num1;
 
     /*public void offDevice(View v){
         Random randomImageGenerator = new Random();
@@ -331,7 +306,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             return null;
         }
 
-        protected void onPostExecute(Long result){
+        protected void onPostExecute(Long result) {
             TextView guess = findViewById(R.id.typeText);
             int index = 0;
             float max = labelProbArray[0][0];
@@ -344,11 +319,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             String bestguess = labels[index];
             guess.setText(bestguess + " : " + max);
 
-           // TextView time = findViewById(R.id.timeResult);
-           // long totaltime = end - start;
-           // time.setText(totaltime + "s");
+            // TextView time = findViewById(R.id.timeResult);
+            // long totaltime = end - start;
+            // time.setText(totaltime + "s");
         }
-
     }
-
 }
