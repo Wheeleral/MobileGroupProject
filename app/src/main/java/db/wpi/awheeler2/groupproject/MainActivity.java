@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Boolean offDevice = false; // if off device inference is wanted
 
     int DIM_BATCH_SIZE = 1;
-    int SIZE_X =224;
+    int SIZE_X =224;//mid 224, low 128
     int SIZE_Y = 224;//are the size of the input window and as discussed earlier should be 224
     int DIM_PIXEL_SIZE =3 ;// is how many channels there are per pixel, which in our case is 3
     int NUM_BYTES_PER_CHANNEL = 4;//is how many bytes each pixel is stored as in our bitmap. Since we'll be using a float based bitmap this is 4.
@@ -244,9 +244,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             String bestguess = labels[index];
             guess.setText("Type: " + bestguess + " : " + max);
             breedChosen = bestguess;
-            //TextView time = findViewById(R.id.timeResult);
+            TextView time = findViewById(R.id.timeView);
             long totaltime = end - start;
-            //time.setText(totaltime + "s");
+            time.setText(totaltime + "s");
             System.out.println("******Time taken: " + totaltime);
             System.out.println("*****Image taken with  "+ max+ " accuracy");
         }
@@ -332,6 +332,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             TextView guess = findViewById(R.id.typeText);
             String bestguess = labels[index];
             guess.setText(bestguess + " : " + max);
+            TextView time = findViewById(R.id.timeView);
+            long totaltime = end - start;
+            time.setText(totaltime + "s");
 
             // TextView time = findViewById(R.id.timeResult);
             // long totaltime = end - start;
@@ -341,7 +344,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private class RunInferenceInCloud extends AsyncTask<String, Float, Long> {
         String inference;
-
+        String time;
+        long start;
+        long end;
         // Server location
         String hosturl = "http://35.231.154.223:54321/model";
         OkHttpClient client;
@@ -354,6 +359,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         protected Long doInBackground(String... img_files) {
             String img_path = img_files[0];
+            start = SystemClock.uptimeMillis();
 
             try {
                 File file = new File(img_path);
@@ -380,6 +386,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            end = SystemClock.uptimeMillis();
 
             return null;
         }
@@ -390,6 +397,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 guess.setText("Type: " + inference);
                 // Print out result
                 System.out.println("Result of inference is: " + inference);
+                TextView time = findViewById(R.id.timeView);
+                long totaltime = end - start;
+                time.setText(totaltime + "s");
                 /*
         protected void onPostExecute(Long results){
             if (result != null) {

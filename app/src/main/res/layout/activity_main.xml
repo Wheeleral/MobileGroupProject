@@ -119,4 +119,14 @@
         app:layout_constraintVertical_bias="0.66"
         app:srcCompat="@android:drawable/ic_menu_camera" />
 
+    <TextView
+        android:id="@+id/timeView"
+        android:layout_width="79dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="88dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/modelTest"
+        app:layout_constraintTop_toBottomOf="@+id/imagePreview" />
+
 </android.support.constraint.ConstraintLayout>
