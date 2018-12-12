@@ -379,7 +379,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                 if (response.isSuccessful() && response.code() == 200) {
                     inference = response.body().string();
-                    System.out.println("***********RESULT FROM SERVER: " + inference);
+
+                    if (inference.split(" ")[0] != null) {
+                        breedChosen = inference.split(" ")[0];
+                    }
+
+                    System.out.println("Animal is: " + breedChosen);
                 } else {
                     throw new IOException();
                 }

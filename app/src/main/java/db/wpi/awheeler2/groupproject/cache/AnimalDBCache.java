@@ -174,6 +174,9 @@ public class AnimalDBCache {
         if (id != -1) {
             // Add to cache
             this.cache.addBitmapToMemoryCache(tagOfImage, Long.toString(id), BitmapFactory.decodeFile(pathToImage));
+            System.out.println("********************Saved to cache! with " + tagOfImage + " id: " + id + " pathToImage " + pathToImage);
+        } else {
+            System.out.println("********************Did not save image to DB");
         }
 
         // Insert new row to DB
@@ -266,7 +269,7 @@ public class AnimalDBCache {
 
         cursor.close();
 
-        imagesOfAnimal.addAll(imagesCached);
+        //imagesOfAnimal.addAll(imagesCached);
 
         return imagesOfAnimal;
     }
