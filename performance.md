@@ -2,23 +2,26 @@ Description of performance metrics, such as inference time, memory utilization, 
 Measurement methodology: how a specifc metric is measured and for long time.
 Quantative results illustrated in tables or figures and a brief summary of what the tables/figures show.
 
-##Metrics
+## Metrics
 We are measuring inference time of the deep learning model on device and the accuracy of the model. We are comparing it across three different deep learning models, one fast and low accuracy another with high accuracy and slow and another mid level. The time taken is only around the tflite.run() statement. This is only a time of the model running not including any file saving or loading. 
 The team didn't do battery consumption since we felt that would be minimal. 
 
-##Results
+## Results
 Time taken for each model:
 ![alt text](images/Time.png)
 
 Accuracy of each model:
+
 ![alt text](images/Accuracy.png)
 
 Averge of the models:
 ![alt text](images/Averge.png)
 
+The higher the accuarcy of the model the more time it took. There are some issues with the accuracy of the low level one as it is higher than expected. However these graphs show that the higher accuracy model, was more accurate overall than the mid and low level models, with a negliable additional amount of time. However the accuracy and correctness of the on-cloud model is not to be challenged as it was overall the most accurate. To optimize our application we would choose the high accuracy model for the on device and keep the on cloud one. 
 
 
-##Data Collected
+
+## Data Collected
 
 Mid Accuracy Model
     Test 1-
