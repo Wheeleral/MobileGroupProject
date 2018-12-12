@@ -32,6 +32,7 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
+
 import org.tensorflow.lite.Interpreter;
 
 import java.io.File;
@@ -49,7 +50,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
-//import org.tensorflow.lite.Interpreter;
 
 
 import db.wpi.awheeler2.groupproject.cache.AnimalDBCache;
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     int DIM_BATCH_SIZE = 1;
     int SIZE_X =224;
-    int SIZE_Y = 224;//are the size of the input window and as discussed earlier should be 299
+    int SIZE_Y = 224;//are the size of the input window and as discussed earlier should be 224
     int DIM_PIXEL_SIZE =3 ;// is how many channels there are per pixel, which in our case is 3
     int NUM_BYTES_PER_CHANNEL = 4;//is how many bytes each pixel is stored as in our bitmap. Since we'll be using a float based bitmap this is 4.
     ByteBuffer imgData;
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
-
+        //set up model
         try {
             tfliteModel = loadModelFile();
         } catch (IOException e) {
@@ -119,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         imgData.order(ByteOrder.nativeOrder());
     }
 
+    //spinner
     public void SetUpSpinner(){
         Spinner spinner = findViewById(R.id.spinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -126,14 +127,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 R.array.animal_array, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
+        spinner.setAdapter(adapter); // Apply the adapter to the spinner
     }
 
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {// Get what is selected in the spinner
+        selectedBreed = parent.getItemAtPosition(pos).toString().toLowerCase();
+    }
+
+    public void onNothingSelected(AdapterView<?> parent) {}
+
+    //Add photo to DB
     public void addToDB(View v) {//Send image to DB
         db.addToDB(breedChosen.toLowerCase(), mCurrentPhotoPath);
     }
 
+    //Switch to PhotoActivity
     public void changeActivity(View v) {//Switch to photo activity
         Intent intent = new Intent(this, photoActivity.class);
         String message = selectedBreed;
@@ -141,39 +149,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         startActivity(intent);
     }
 
-    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-        // Get what is selected in the spinner
-        selectedBreed = parent.getItemAtPosition(pos).toString().toLowerCase();
-    }
-
-    public void onNothingSelected(AdapterView<?> parent) {
-        // Another interface callback
-    }
-
+    //Get Camera Service Up
     public void onClickPicture(View view){
         dispatchTakePictureIntent();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        ImageView pictureView = findViewById(R.id.imagePreview);
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            //Bundle extras = data.getExtras();
-            int targetW = pictureView.getWidth();
-            int targetH = pictureView.getHeight();
-            BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-            bmOptions.inJustDecodeBounds = true;
-            BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
-            int photoW = bmOptions.outWidth;
-            int photoH = bmOptions.outHeight;
-            int scaleFactor = Math.min(photoW/targetW, photoH/targetH);
-            bmOptions.inJustDecodeBounds = false;
-            bmOptions.inSampleSize = scaleFactor;
-
-            Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
-            pictureView.setImageBitmap(bitmap);
-            imageTaken = bitmap;
-        }
     }
 
     private void dispatchTakePictureIntent() {
@@ -181,14 +159,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             // Create the File where the photo should go
             File photoFile = null;
-            try {
-                photoFile = createImageFile();
+            try { photoFile = createImageFile();
             } catch (IOException ex) {}
             // Continue only if the File was successfully created
             if (photoFile != null) {
                 Uri photoURI = FileProvider.getUriForFile(this,
-                        "db.wpi.awheeler2.groupproject.fileprovider",
-                        photoFile);
+                        "db.wpi.awheeler2.groupproject.fileprovider", photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
             }
@@ -209,17 +185,40 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         return image;
     }
 
-    //Deep inference code
-    public void GetType(View view) throws FileNotFoundException {
-        if (offDevice) { //run model off device
-            switchPhoto();
-        }
-        else { //run on device
-            switchPhoto();
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //When camera is done getting photo
+        ImageView pictureView = findViewById(R.id.imagePreview);
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            //Bundle extras = data.getExtras();
+            int targetW = pictureView.getWidth();
+            int targetH = pictureView.getHeight();
+            BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+            bmOptions.inJustDecodeBounds = true;
+            BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
+            int photoW = bmOptions.outWidth;
+            int photoH = bmOptions.outHeight;
+            int scaleFactor = Math.min(photoW/targetW, photoH/targetH);
+            bmOptions.inJustDecodeBounds = false;
+            bmOptions.inSampleSize = scaleFactor;
+
+            Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
+            pictureView.setImageBitmap(bitmap);
+            imageTaken = bitmap;
         }
     }
 
-    public void switchPhoto() throws FileNotFoundException {
+    //Deep inference code
+    public void GetType(View view) throws FileNotFoundException {
+        if (offDevice) { //run model off device
+            runInference();
+        }
+        else { //run on device
+            runInference();
+        }
+    }
+
+    public void runInference() throws FileNotFoundException {
         Context context=getApplicationContext();
         labels =  context.getResources().getStringArray(R.array.animal_array);
         Bitmap resized  = imageTaken.createScaledBitmap(imageTaken, 224, 224, false); //filter?
@@ -229,12 +228,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         if (offDevice) {
             System.out.println("Performing off-device inferencing on image: " + mCurrentPhotoPath);
             new RunInferenceInCloud().execute(mCurrentPhotoPath);
-
         } else {
             long start = SystemClock.uptimeMillis();
             tflite.run(imgData, labelProbArray);
             long end = SystemClock.uptimeMillis();
-            TextView guess = findViewById(R.id.typeText);
             int index = 0;
             float max = labelProbArray[0][0];
             for (int i = 0; i < 10; i++) {
@@ -243,14 +240,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     index = i;
                 }
             }
+            TextView guess = findViewById(R.id.typeText);
             String bestguess = labels[index];
             guess.setText("Type: " + bestguess + " : " + max);
             breedChosen = bestguess;
+            //TextView time = findViewById(R.id.timeResult);
+            long totaltime = end - start;
+            //time.setText(totaltime + "s");
+            System.out.println("******Time taken: " + totaltime);
+            System.out.println("*****Image taken with  "+ max+ " accuracy");
         }
-
-        //TextView time = findViewById(R.id.timeResult);
-        //long totaltime = end - start;
-        //time.setText(totaltime + "s");
     }
 
     private MappedByteBuffer loadModelFile() throws IOException {
@@ -263,6 +262,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
     private String getModelPath() {
         return "Model/optimized_graph.lite";
+        //return "Model/HighAccuracy/optimized_graph.lite";
+        //return "Model/LowAccuracy/optimized_graph.lite";
+
     }
 
     private void convertBitmapToByteBuffer(Bitmap bitmap) {
@@ -319,7 +321,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
 
         protected void onPostExecute(Long result) {
-            TextView guess = findViewById(R.id.typeText);
             int index = 0;
             float max = labelProbArray[0][0];
             for (int i = 0; i < 1001; i++) {
@@ -328,6 +329,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     index = i;
                 }
             }
+            TextView guess = findViewById(R.id.typeText);
             String bestguess = labels[index];
             guess.setText(bestguess + " : " + max);
 
@@ -388,6 +390,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 guess.setText("Type: " + inference);
                 // Print out result
                 System.out.println("Result of inference is: " + inference);
+                /*
+        protected void onPostExecute(Long results){
+            if (result != null) {
+                // Print out result
+                System.out.println("Result of inference is: " + result);
+                TextView guess = findViewById(R.id.typeText);
+                String bestguess = result;
+                guess.setText("Type: " + bestguess);
+                breedChosen = bestguess;*/
             } else {
                 System.out.println("NO RESPONSE FROM SERVER!");
             }
