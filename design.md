@@ -15,7 +15,9 @@ To accomplish this goal, the team utilized the skills and code we created throug
 
 ## How we designed the application
 There are two activities the application uses and several java classes. The first activity is where the camera, the inference is done and where the images are saved to the database. This was done on the same image as it allowed the user to choose if they wanted to keep the image. A dropdown or spinner was utilized when switching to the second activity. This changed what type of animal was shown on the second activity. The second activity retrieved all images of that type from the database and puts them all in a scroll view. 
-(JOAN EXPLAIN DB HERE)
+
+
+## Database (JOAN EXPLAIN DB HERE)
 
 ## Custom Tensorflow Model
 The model was created using the tensorflow python libraries and ImageNet image database. 10 animal categories were chosen to be made into this model: bear, bird, bunny, cat, dog, fish, hamster, person, pig, squirrel.
