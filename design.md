@@ -1,6 +1,6 @@
 #Design Document
 Have you ever been curious about what kind of animal that animal is? Take a photo and find out. Then see all the photos you have taken!
-Our application supports: Bear, Bird, Bunny, Cat, Dog, Fish, Hamster, Person, Pig and Squirell.
+Our application supports: Bear, Bird, Bunny, Cat, Dog, Fish, Hamster, Person, Pig and Squirrel.
 
 Our application is designed to be an extension of the “petwars” application described throughout the term. 
 To accomplish this goal, the team utilized the skills and code we created through Projects 1-4 to create the base of the application that will take a photo and save it to a database. This was also be the foundation for our deep learning. The team split into designated areas (UI, deep learning, database, camera) to equally distribute work and ensure all aspects of the application are covered and completed. The team created the custom deep learning model using Tensorflow and the stanfrod image library, either lite or mobile, as well as Imagenet, the Stanford image database, to train a new model explicitly on animals. 
