@@ -340,7 +340,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private class RunInferenceInCloud extends AsyncTask<String, Float, Long> {
-        String result = null;
+        String inference;
 
         // Server location
         String hosturl = "http://35.231.154.223:54321/model";
@@ -348,6 +348,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         private final MediaType MEDIA_TYPE_JPEG = MediaType.parse("image/jpeg");
 
         protected void onPreExecute() {
+            inference = null;
             client = new OkHttpClient();
         }
 
@@ -371,7 +372,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 Response response = client.newCall(request).execute();
 
                 if (response.isSuccessful() && response.code() == 200) {
-                    result = response.body().string();
+                    inference = response.body().string();
+                    System.out.println("***********RESULT FROM SERVER: " + inference);
                 } else {
                     throw new IOException();
                 }
@@ -382,6 +384,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             return null;
         }
 
+        protected void onPostExecute(Long result){
+            if (inference != null) {
+                TextView guess = findViewById(R.id.typeText);
+                guess.setText("Type: " + inference);
+                // Print out result
+                System.out.println("Result of inference is: " + inference);
+                /*
         protected void onPostExecute(Long results){
             if (result != null) {
                 // Print out result
@@ -389,7 +398,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 TextView guess = findViewById(R.id.typeText);
                 String bestguess = result;
                 guess.setText("Type: " + bestguess);
-                breedChosen = bestguess;
+                breedChosen = bestguess;*/
             } else {
                 System.out.println("NO RESPONSE FROM SERVER!");
             }
