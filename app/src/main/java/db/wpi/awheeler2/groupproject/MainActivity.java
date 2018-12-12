@@ -25,6 +25,13 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.squareup.okhttp.MediaType;
+import com.squareup.okhttp.MultipartBuilder;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
+import com.squareup.okhttp.Response;
+
 import org.tensorflow.lite.Interpreter;
 
 import java.io.File;
@@ -219,22 +226,27 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         convertBitmapToByteBuffer(resized);
 
         // new InferenceAsync().execute("");
+        if (offDevice) {
+            System.out.println("Performing off-device inferencing on image: " + mCurrentPhotoPath);
+            new RunInferenceInCloud().execute(mCurrentPhotoPath);
 
-        long start = SystemClock.uptimeMillis();
-        tflite.run(imgData, labelProbArray);
-        long end = SystemClock.uptimeMillis();
-        TextView guess = findViewById(R.id.typeText);
-        int index = 0;
-        float max = labelProbArray[0][0];
-        for (int i = 0; i < 10; i++) {
-            if (labelProbArray[0][i] > max) {
-                max = labelProbArray[0][i];
-                index = i;
+        } else {
+            long start = SystemClock.uptimeMillis();
+            tflite.run(imgData, labelProbArray);
+            long end = SystemClock.uptimeMillis();
+            TextView guess = findViewById(R.id.typeText);
+            int index = 0;
+            float max = labelProbArray[0][0];
+            for (int i = 0; i < 10; i++) {
+                if (labelProbArray[0][i] > max) {
+                    max = labelProbArray[0][i];
+                    index = i;
+                }
             }
+            String bestguess = labels[index];
+            guess.setText("Type: " + bestguess + " : " + max);
+            breedChosen = bestguess;
         }
-        String bestguess = labels[index];
-        guess.setText("Type: " + bestguess + " : " + max);
-        breedChosen = bestguess;
 
         //TextView time = findViewById(R.id.timeResult);
         //long totaltime = end - start;
@@ -322,6 +334,59 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             // TextView time = findViewById(R.id.timeResult);
             // long totaltime = end - start;
             // time.setText(totaltime + "s");
+        }
+    }
+
+    private class RunInferenceInCloud extends AsyncTask<String, Float, Long> {
+        String result = null;
+
+        // Server location
+        String hosturl = "http://35.231.154.223:54321/model";
+        OkHttpClient client;
+        private final MediaType MEDIA_TYPE_JPEG = MediaType.parse("image/jpeg");
+
+        protected void onPreExecute() {
+            client = new OkHttpClient();
+        }
+
+        protected Long doInBackground(String... img_files) {
+            String img_path = img_files[0];
+
+            try {
+                File file = new File(img_path);
+
+                // Do inference here!
+                RequestBody requestBody = new MultipartBuilder()
+                        .type(MultipartBuilder.FORM)
+                        .addFormDataPart("file", file.getName(), RequestBody.create(MEDIA_TYPE_JPEG, file))
+                        .build();
+
+                Request request = new Request.Builder()
+                        .url(hosturl)
+                        .post(requestBody)
+                        .build();
+
+                Response response = client.newCall(request).execute();
+
+                if (response.isSuccessful() && response.code() == 200) {
+                    result = response.body().string();
+                } else {
+                    throw new IOException();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        protected void onPostExecute(Long result){
+            if (result != null) {
+                // Print out result
+                System.out.println("Result of inference is: " + result);
+            } else {
+                System.out.println("NO RESPONSE FROM SERVER!");
+            }
         }
     }
 }
