@@ -16,4 +16,12 @@ To accomplish this goal, the team utilized the skills and code we created throug
 ##How we designed the application
 There are two activities the application uses and several java classes. The first activity is where the camera, the inference is done and where the images are saved to the database. This was done on the same image as it allowed the user to choose if they wanted to keep the image. A dropdown or spinner was utilized when switching to the second activity. This changed what type of animal was shown on the second activity. The second activity retrieved all images of that type from the database and puts them all in a scroll view. 
 (JOAN EXPLAIN DB HERE)
-(EXPLAIN THE MODEL AS WELL)
+
+#Custom Tensorflow Model
+The model was created using the tensorflow python libraries and ImageNet image database. 10 animal categories were chosen to be made into this model: bear, bird, bunny, cat, dog, fish, hamster, person, pig, squirrel.
+The model was trained with around 7 thousand images total and trained for 5000 steps. this lead to an average accuracy of 84.7% after training. we then imported this mobilenets0.50_224 trained model into the application. 
+Unfortunately the team discovered the model may have overfitted, and in turn is more likely to recognize animals as birds or people. this is an issue with how tensorflow trains and can be remeidied in the future by using better
+training pictures and testing different amounts of training step. The model does work well off device, however latency is an issue. Overall this custom model was a great exercise in further unserstanding machine learning and benfits
+the app's purpose well. 
+
+The team chose to do the custom model to learn more about deep learning and to ensure the app would focus on detecting animals and not recognize household items. 
