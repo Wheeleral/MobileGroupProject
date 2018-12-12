@@ -227,6 +227,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         // new InferenceAsync().execute("");
         if (offDevice) {
+            System.out.println("Performing off-device inferencing on image: " + mCurrentPhotoPath);
             new RunInferenceInCloud().execute(mCurrentPhotoPath);
 
         } else {
