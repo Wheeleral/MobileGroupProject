@@ -7,6 +7,18 @@ We are measuring inference time of the deep learning model on device and the acc
 The team didn't do battery consumption since we felt that would be minimal. 
 
 ##Results
+Time taken for each model:
+![alt text](images/Time.png)
+
+Accuracy of each model:
+![alt text](images/Accuracy.png)
+
+Averge of the models:
+![alt text](images/Averge.png)
+
+
+
+##Data Collected
 
 Mid Accuracy Model
     Test 1-
@@ -25,7 +37,7 @@ Mid Accuracy Model
         Time:48ms
         Accuracy:0.3431
     Test 6-
-        Time:103ms
+        Time:58ms
         Accuracy:0.4502
     Test 7-
         Time:62ms
