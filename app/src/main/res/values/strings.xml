@@ -10,7 +10,7 @@
         <item>Hamster</item>
         <item>Person</item>
         <item>Pig</item>
-        <item>Squirll</item>
+        <item>Squirrel</item>
     </string-array>
     <!-- main activity -->
     <string name="photo_instruction">Take a photo of an animal!</string>
