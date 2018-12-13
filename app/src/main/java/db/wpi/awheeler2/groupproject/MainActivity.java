@@ -210,12 +210,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     //Deep inference code
     public void GetType(View view) throws FileNotFoundException {
-        if (offDevice) { //run model off device
             runInference();
-        }
-        else { //run on device
-            runInference();
-        }
     }
 
     public void runInference() throws FileNotFoundException {
@@ -401,6 +396,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 TextView guess = findViewById(R.id.typeText);
                 guess.setText("Type: " + inference);
                 // Print out result
+                breedChosen = inference.split(" ")[0];
+                System.out.println("*******Breed ="+ breedChosen+"*");
+
                 System.out.println("Result of inference is: " + inference);
                 TextView time = findViewById(R.id.timeView);
                 long totaltime = end - start;
