@@ -30,7 +30,7 @@ public class TestActivity extends AppCompatActivity {
         getCats.setOnClickListener(getCatListener);
         getDogs.setOnClickListener(getDogListener);
 
-        db = AnimalDB.getInstance(getApplicationContext());
+        db = DB.getInstance(getApplicationContext());
 
         db.saveImagesFromAsset(new String[]{"cat", "dog"});
 

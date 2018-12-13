@@ -7,8 +7,8 @@ To accomplish this goal, the team utilized the skills and code we created throug
 
 
 ## How to use our application
-1. Click the button at the top and take a photo
-2. If you want to do off device inference click on the switch to turn it on
+1. Click the camera button and take a photo
+2. If you want to do off device inference click on the switch to turn on cloud inference
 3. Click on Get Type to get the type of animal in the photo
 4. Click add to Database if you want to save the photo
 5. User the dropdown and select the category you want to view, then click go and see all the photos you've taken in that category

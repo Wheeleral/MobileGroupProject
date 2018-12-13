@@ -35,7 +35,7 @@ public class photoActivity extends AppCompatActivity {
         // TODO: We need to be able to pass this database object between activities - currently cache is reloading all data every time the activity is created
         //need to set the db here, but don't know how to with the context
         //db = new AnimalDB(this);
-        db = AnimalDBCache.getInstance(getApplicationContext());
+        db = DBCache.getInstance(getApplicationContext());
 
         //for testing purposes
         //db.saveImagesFromAsset(new String[]{"cat", "dog"});
@@ -60,6 +60,8 @@ public class photoActivity extends AppCompatActivity {
     public void populateScroll(){  //this will need to take in the category
         LinearLayout layout = findViewById(R.id.photoLayout);
         //grab the images in correct category
+
+        System.out.println("Category selected is: " + category);
         imagesOfAnimal = db.getAllImagesOfAnimal(category);  //need to get category somehow
         for(int i = 0; i < imagesOfAnimal.size(); i++) {
             System.out.print("entered for loop");

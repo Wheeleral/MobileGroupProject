@@ -58,10 +58,9 @@ public class AnimalDBCache {
     private ArrayList<Bitmap> imagesOfAnimal;
     private ArrayList<Bitmap> imagesCached;
     private Cache cache;
-    private static AnimalDBCache instance;
 
     // Constructor
-    private AnimalDBCache(Context context) {
+    public AnimalDBCache(Context context) {
         this.context = context;
         this.helper = new AnimalDbHelper(context);
         this.imagesOfAnimal = new ArrayList<>();
@@ -173,6 +172,7 @@ public class AnimalDBCache {
 
         if (id != -1) {
             // Add to cache
+            System.out.println("In AddToDB: id added to the cache is: " + id);
             this.cache.addBitmapToMemoryCache(tagOfImage, Long.toString(id), BitmapFactory.decodeFile(pathToImage));
             System.out.println("********************Saved to cache! with " + tagOfImage + " id: " + id + " pathToImage " + pathToImage);
         } else {
@@ -260,6 +260,7 @@ public class AnimalDBCache {
                 imagesOfAnimal.add(bitmap);
 
                 // Add to cache
+                System.out.println("Id is added to the cache is: " + id);
                 this.cache.addBitmapToMemoryCache(animal, id, bitmap);
 
             } catch (FileNotFoundException e) {
@@ -276,16 +277,5 @@ public class AnimalDBCache {
 
     public void close() {
         this.helper.close();
-    }
-
-    public static AnimalDBCache getInstance(Context context) {
-        if (instance == null) {
-            instance = new AnimalDBCache(context);
-
-            // Load data
-            instance.saveImagesFromAsset(new String[]{"cat", "dog"});
-        }
-
-        return instance;
     }
 }
