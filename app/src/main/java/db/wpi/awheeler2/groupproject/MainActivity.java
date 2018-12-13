@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 // do something, the isChecked will be
                 // true if the switch is in the On position
                 offDevice = isChecked;
+                System.out.println("offDevice mode is: " + offDevice);
             }
         });
 
@@ -138,7 +139,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     //Add photo to DB
     public void addToDBClick(View v) {//Send image to DB
-        db.addToDB(breedChosen.toLowerCase(), mCurrentPhotoPath);
+        System.out.println("AddToDB clicked!!!!!!!!!!! with breed " + breedChosen + " of path " + mCurrentPhotoPath);
+        //breedChosen = "cat";
+        System.out.println("The length of breedchosen is: " + breedChosen.length());
+        db.addToDB(((String)breedChosen).toLowerCase(), mCurrentPhotoPath);
     }
 
     //Switch to PhotoActivity
@@ -210,7 +214,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     //Deep inference code
     public void GetType(View view) throws FileNotFoundException {
-            runInference();
+        runInference();
     }
 
     public void runInference() throws FileNotFoundException {
@@ -245,6 +249,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             System.out.println("******Time taken: " + totaltime);
             System.out.println("*****Image taken with  "+ max+ " accuracy");
         }
+
     }
 
     private MappedByteBuffer loadModelFile() throws IOException {
@@ -301,6 +306,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
     */
 
+    /*
     private class InferenceAsync extends AsyncTask<String, Float, Long> {
         String time;
         long start;
@@ -336,7 +342,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             // time.setText(totaltime + "s");
         }
     }
-
+*/
     private class RunInferenceInCloud extends AsyncTask<String, Float, Long> {
         String inference;
         String time;
@@ -374,12 +380,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                 if (response.isSuccessful() && response.code() == 200) {
                     inference = response.body().string();
-
-                    if (inference.split(" ")[0] != null) {
-                        breedChosen = inference.split(" ")[0];
-                    }
-
-                    System.out.println("Animal is: " + breedChosen);
                 } else {
                     throw new IOException();
                 }
@@ -395,10 +395,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             if (inference != null) {
                 TextView guess = findViewById(R.id.typeText);
                 guess.setText("Type: " + inference);
-                breedChosen = inference.split(" ")[0];
 
                 // Print out result
                 breedChosen = inference.split(" ")[0];
+                breedChosen = breedChosen.replaceAll("\\s","");
                 System.out.println("*******Breed ="+ breedChosen+"*");
 
                 System.out.println("Result of inference is: " + inference);

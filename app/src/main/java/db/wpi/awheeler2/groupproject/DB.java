@@ -9,7 +9,7 @@ public class DB {
 
     private DB() {}
 
-    public static AnimalDB getInstance(Context context) {
+    public static synchronized AnimalDB getInstance(Context context) {
         if (instance == null) {
             System.out.println("*******************CREATE ANOTHER INSTANCE *****************");
             instance = new AnimalDB(context);

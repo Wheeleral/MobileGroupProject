@@ -15,12 +15,14 @@ public class Cache {
 
     public void addBitmapToMemoryCache(String animal, String key, Bitmap bitmap) {
         ArrayList<String> keysToAnimalBitmaps = new ArrayList<>();
+        ArrayList<String> keysInCache = getKeysOfAnimalInMemCache(animal);
 
         if (getBitmapFromMemCache(animal) == null) {
             this.bitmapCache.put(key, bitmap);
 
-            if (getKeysOfAnimalInMemCache(animal) != null) {
-                keysToAnimalBitmaps.addAll(getKeysOfAnimalInMemCache(animal));
+            if (keysInCache != null) {
+                System.out.println("Keys in animal cache!");
+                keysToAnimalBitmaps.addAll(keysInCache);
             }
 
             keysToAnimalBitmaps.add(key);
@@ -31,44 +33,48 @@ public class Cache {
         }
     }
 
-    public Bitmap getBitmapFromMemCache(String key) {
+    private synchronized Bitmap  getBitmapFromMemCache(String key) {
         return this.bitmapCache.get(key);
     }
 
 
     /* Call this function after getAllBitmapsOfAnimalInMemoryCache
      */
-    public ArrayList<String> getKeysOfAnimalInMemCache(String animal) {
+    private synchronized ArrayList<String> getKeysOfAnimalInMemCache(String animal) {
         return this.animalCache.get(animal);
+    }
+
+    private synchronized void updateKeysInAnimalCache(String animal, ArrayList<String> keys) {
+        this.animalCache.put(animal, keys);
     }
 
     /* Update AnimalCache as well!
      */
-    public  ArrayList<Bitmap> getAllBitmapsOfAnimalInMemoryCache(String animal) {
+    public synchronized ArrayList<Bitmap> getAllBitmapsOfAnimalInMemoryCache(String animal) {
         ArrayList<String> keys = getKeysOfAnimalInMemCache(animal);
         ArrayList<Bitmap> bitmapsOfAnimalInCache = new ArrayList<>();
+        ArrayList<String> newKeysToAnimalCache = new ArrayList<>();
 
         if (keys != null) {
             for (String key: keys) {
                 Bitmap bitmap = getBitmapFromMemCache(key);
-                if (bitmap == null) {
-                    keys.remove(key);
-                } else {
+                if (bitmap != null) {
                     bitmapsOfAnimalInCache.add(bitmap);
+                    newKeysToAnimalCache.add(key);
                 }
             }
 
-            this.animalCache.put(animal, keys);
+            updateKeysInAnimalCache(animal, newKeysToAnimalCache);
         }
 
         return bitmapsOfAnimalInCache;
     }
 
-    public ArrayList<String> getValuesInAnimalCache(String animal) {
+    public synchronized ArrayList<String> getValuesInAnimalCache(String animal) {
         return this.animalCache.get(animal);
     }
 
-    public Bitmap getValuesInBitmapCache(String id) {
+    public synchronized Bitmap getValuesInBitmapCache(String id) {
         return this.bitmapCache.get(id);
     }
 

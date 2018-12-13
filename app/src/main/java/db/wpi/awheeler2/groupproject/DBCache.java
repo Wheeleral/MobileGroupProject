@@ -9,7 +9,7 @@ public class DBCache {
 
     private DBCache() {}
 
-    public static AnimalDBCache getInstance(Context context) {
+    public static synchronized AnimalDBCache getInstance(Context context) {
         if (instance == null) {
             System.out.println("*******************CREATE ANOTHER INSTANCE *****************");
             instance = new AnimalDBCache(context);

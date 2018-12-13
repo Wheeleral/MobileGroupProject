@@ -49,7 +49,7 @@ public class AnimalDB {
     private SQLiteDatabase db;
     private Context context;
     private ArrayList<Bitmap> imagesOfAnimal = new ArrayList<>();
-    private CacheTester testCache;
+    //private CacheTester testCache;
 
     // Constructor
     public AnimalDB(Context context) {
@@ -203,10 +203,12 @@ public class AnimalDB {
     }
 
     /* After all default images are preloaded */
+    /*
     public void test() {
         this.testCache = new CacheTester(this.getAllImagesOfAnimal("cat"), getAllImagesOfAnimal("dog"));
         this.testCache.runTests();
     }
+    */
 
     public void close() {
         this.helper.close();
