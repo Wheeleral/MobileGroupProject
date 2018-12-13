@@ -13,7 +13,8 @@ Accuracy of each model:
 Average of the models:
 ![alt text](images/Averge.png)
 
-The higher the accuarcy of the model the more time it took. There are some issues with the accuracy of the low level one as it is higher than expected. However these graphs show that the higher accuracy model, was more accurate overall than the mid and low level models, with a negliable additional amount of time. However the accuracy and correctness of the on-cloud model is not to be challenged as it was overall the most accurate. To optimize our application we would choose the high accuracy model for the on device and keep the on cloud one. 
+The higher the accuarcy of the model the more time it took. There are some issues with the accuracy of the low level one as it is higher than expected. However, while the low accuarcy model was more sure of its prediction, the overall prediction was incorrect more often.
+These graphs show that the higher accuracy model was more accurate overall than the mid and low level models, with a negliable additional amount of time. However the accuracy and correctness of the on-cloud model is not to be challenged as it was overall the most accurate. To optimize our application we would choose the high accuracy model for the on device and keep the on cloud one. 
 
 
 
