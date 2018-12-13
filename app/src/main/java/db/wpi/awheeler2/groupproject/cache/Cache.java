@@ -26,6 +26,8 @@ public class Cache {
             keysToAnimalBitmaps.add(key);
 
             this.animalCache.put(animal, keysToAnimalBitmaps);
+
+            System.out.println("For animal " + animal + " we have the following keys: " + keysToAnimalBitmaps);
         }
     }
 

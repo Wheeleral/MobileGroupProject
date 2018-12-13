@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         SetUpSpinner();//Get spinner Populated
         Spinner spinner = findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
-        db = AnimalDBCache.getInstance(getApplicationContext());
+        db = DBCache.getInstance(getApplicationContext());
 
         //Switch Setup
         Switch offDeviceSwitch = findViewById(R.id.offDevice);
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onNothingSelected(AdapterView<?> parent) {}
 
     //Add photo to DB
-    public void addToDB(View v) {//Send image to DB
+    public void addToDBClick(View v) {//Send image to DB
         db.addToDB(breedChosen.toLowerCase(), mCurrentPhotoPath);
     }
 
@@ -400,20 +400,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             if (inference != null) {
                 TextView guess = findViewById(R.id.typeText);
                 guess.setText("Type: " + inference);
+                breedChosen = inference.split(" ")[0];
+
                 // Print out result
                 System.out.println("Result of inference is: " + inference);
                 TextView time = findViewById(R.id.timeView);
                 long totaltime = end - start;
                 time.setText(totaltime + "s");
-                /*
-        protected void onPostExecute(Long results){
-            if (result != null) {
-                // Print out result
-                System.out.println("Result of inference is: " + result);
-                TextView guess = findViewById(R.id.typeText);
-                String bestguess = result;
-                guess.setText("Type: " + bestguess);
-                breedChosen = bestguess;*/
             } else {
                 System.out.println("NO RESPONSE FROM SERVER!");
             }

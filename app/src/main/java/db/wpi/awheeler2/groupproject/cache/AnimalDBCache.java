@@ -58,10 +58,9 @@ public class AnimalDBCache {
     private ArrayList<Bitmap> imagesOfAnimal;
     private ArrayList<Bitmap> imagesCached;
     private Cache cache;
-    private static AnimalDBCache instance;
 
     // Constructor
-    private AnimalDBCache(Context context) {
+    public AnimalDBCache(Context context) {
         this.context = context;
         this.helper = new AnimalDbHelper(context);
         this.imagesOfAnimal = new ArrayList<>();
@@ -173,6 +172,7 @@ public class AnimalDBCache {
 
         if (id != -1) {
             // Add to cache
+            System.out.println("In AddToDB: id added to the cache is: " + id);
             this.cache.addBitmapToMemoryCache(tagOfImage, Long.toString(id), BitmapFactory.decodeFile(pathToImage));
             System.out.println("********************Saved to cache! with " + tagOfImage + " id: " + id + " pathToImage " + pathToImage);
         } else {
@@ -206,8 +206,6 @@ public class AnimalDBCache {
         }
 
         //String[] projection = {AnimalContract.AnimalEntry.COLUMN_NAME_PATH};
-        StringBuilder selection;
-        String[] selectionArgs;
 
         if (imagesCached.size() > 0) {
             System.out.println("********** Images are stored in the cache! **********");
@@ -228,15 +226,16 @@ public class AnimalDBCache {
             System.out.println("********** Selection Arguments: " + Arrays.toString(selectionArgs));
             */
 
-            return imagesCached;
+            //return imagesCached;
 
         } else { // No images of animal currently stored in cache - load all images
-            System.out.println("********** Load from DATABASE! **********");
-            // Condition: where clause
-            selection = new StringBuilder(AnimalContract.AnimalEntry.COLUMN_NAME_TAG + " = ?");
-            // Values of where clause
-            selectionArgs = new String[]{animal};
         }
+
+        System.out.println("********** Load from DATABASE! **********");
+        // Condition: where clause
+        StringBuilder selection = new StringBuilder(AnimalContract.AnimalEntry.COLUMN_NAME_TAG + " = ?");
+        // Values of where clause
+        String[] selectionArgs = new String[]{animal};
 
         Cursor cursor = db.query(
                 AnimalContract.AnimalEntry.TABLE_NAME,
@@ -260,6 +259,7 @@ public class AnimalDBCache {
                 imagesOfAnimal.add(bitmap);
 
                 // Add to cache
+                System.out.println("Id is added to the cache is: " + id);
                 this.cache.addBitmapToMemoryCache(animal, id, bitmap);
 
             } catch (FileNotFoundException e) {
@@ -276,16 +276,5 @@ public class AnimalDBCache {
 
     public void close() {
         this.helper.close();
-    }
-
-    public static AnimalDBCache getInstance(Context context) {
-        if (instance == null) {
-            instance = new AnimalDBCache(context);
-
-            // Load data
-            instance.saveImagesFromAsset(new String[]{"cat", "dog"});
-        }
-
-        return instance;
     }
 }

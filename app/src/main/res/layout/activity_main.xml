@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:onClick="addToDB"
+        android:onClick="addToDBClick"
         android:text="@string/save_button"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
