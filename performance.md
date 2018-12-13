@@ -1,6 +1,6 @@
 ## Metrics
-We are measuring inference time of the deep learning model on device and the accuracy of the model. We are comparing it across three different deep learning models, one fast and low accuracy another with high accuracy and slow and another mid level. The time taken is only around the tflite.run() statement. This is only a time of the model running not including any file saving or loading. 
-The team didn't do battery consumption since we felt that would be minimal. 
+We are measuring inference time of the deep learning model on device and the accuracy of the model. We are comparing it across three different deep learning models, one low latency and low accuracy (MobileNets_0.25_144) another with high accuracy and high latency (MobileNets_1.0_224) and another with moderate accuracy and latency (MobileNets_0.50_244). The time taken is measured around the tflite.run() statement. This is only a time measurment of the model running not including any file saving or loading. 
+The team did not measure battery consumption differences between the models as we felt that would be negligable. 
 
 ## Results
 Time taken for each model:
@@ -13,12 +13,13 @@ Accuracy of each model:
 Average of the models:
 ![alt text](images/Averge.png)
 
-The higher the accuarcy of the model the more time it took. There are some issues with the accuracy of the low level one as it is higher than expected. However, while the low accuarcy model was more sure of its prediction, the overall prediction was incorrect more often.
-These graphs show that the higher accuracy model was more accurate overall than the mid and low level models, with a negliable additional amount of time. However the accuracy and correctness of the on-cloud model is not to be challenged as it was overall the most accurate. To optimize our application we would choose the high accuracy model for the on device and keep the on cloud one. 
+The higher the accuarcy of the model the more time it took to return a response. There are some issues with the accuracy of the low level model as it's accuracy is higher than expected. However, while the low accuarcy model was more sure of its prediction, the overall prediction was incorrect more often.
+These graphs show that the higher accuracy model was more accurate overall than the mid and low level models, with a negliable additional amount of response latency. However the accuracy and correctness of the on-cloud model is not to be challenged as it was overall the most accurate. To optimize our application we would choose the high accuracy model for the on device and keep the on cloud one. 
 
 
 
 ## Data Collected
+Time is measured in milliseconds, accuracy is measured from 0.0 - 1.0
 
 Mid Accuracy Model
     Test 1-
