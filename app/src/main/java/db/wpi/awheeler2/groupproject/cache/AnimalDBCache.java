@@ -206,6 +206,8 @@ public class AnimalDBCache {
         }
 
         //String[] projection = {AnimalContract.AnimalEntry.COLUMN_NAME_PATH};
+        StringBuilder selection;
+        String[] selectionArgs;
 
         if (imagesCached.size() > 0) {
             System.out.println("********** Images are stored in the cache! **********");
@@ -226,16 +228,15 @@ public class AnimalDBCache {
             System.out.println("********** Selection Arguments: " + Arrays.toString(selectionArgs));
             */
 
-            //return imagesCached;
+            return imagesCached;
 
         } else { // No images of animal currently stored in cache - load all images
+            System.out.println("********** Load from DATABASE! **********");
+            // Condition: where clause
+            selection = new StringBuilder(AnimalContract.AnimalEntry.COLUMN_NAME_TAG + " = ?");
+            // Values of where clause
+            selectionArgs = new String[]{animal};
         }
-
-        System.out.println("********** Load from DATABASE! **********");
-        // Condition: where clause
-        StringBuilder selection = new StringBuilder(AnimalContract.AnimalEntry.COLUMN_NAME_TAG + " = ?");
-        // Values of where clause
-        String[] selectionArgs = new String[]{animal};
 
         Cursor cursor = db.query(
                 AnimalContract.AnimalEntry.TABLE_NAME,
