@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Boolean offDevice = false; // if off device inference is wanted
 
     int DIM_BATCH_SIZE = 1;
-    int SIZE_X =224;//mid 224, low 128
+    int SIZE_X =224;//mid/high 224, low 128
     int SIZE_Y = 224;//are the size of the input window and as discussed earlier should be 224
     int DIM_PIXEL_SIZE =3 ;// is how many channels there are per pixel, which in our case is 3
     int NUM_BYTES_PER_CHANNEL = 4;//is how many bytes each pixel is stored as in our bitmap. Since we'll be using a float based bitmap this is 4.
