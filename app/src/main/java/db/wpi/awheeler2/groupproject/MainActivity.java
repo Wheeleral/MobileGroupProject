@@ -3,11 +3,13 @@ package db.wpi.awheeler2.groupproject;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
@@ -174,7 +176,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
+        String imageFileName = "JPEG_" + timeStamp+ "A" + "_";
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(
                 imageFileName,  /* prefix */
@@ -182,6 +184,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 storageDir      /* directory */
         );
         mCurrentPhotoPath = image.getAbsolutePath();
+
+
+
         return image;
     }
 
@@ -205,6 +210,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
             pictureView.setImageBitmap(bitmap);
             imageTaken = bitmap;
+
+
         }
     }
 
