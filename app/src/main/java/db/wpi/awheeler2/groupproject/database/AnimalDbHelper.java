@@ -21,6 +21,7 @@ public class AnimalDbHelper extends SQLiteOpenHelper {
     // Default Constructor
     public AnimalDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+
     }
 
     @Override

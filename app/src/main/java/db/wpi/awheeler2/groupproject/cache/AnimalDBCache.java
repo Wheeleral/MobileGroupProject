@@ -228,6 +228,8 @@ public class AnimalDBCache {
             System.out.println("********** Selection Arguments: " + Arrays.toString(selectionArgs));
             */
 
+            System.out.println("************Num images stored in cache of animal " + animal + " is: " + imagesCached.size());
+
             return imagesCached;
 
         } else { // No images of animal currently stored in cache - load all images
