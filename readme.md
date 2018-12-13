@@ -4,9 +4,11 @@ So you're interested in this project?
 
 Included in this file is a:
 
-design.md which is a markdown about our design
+design.md which is a markdown about our design for part 1.
 
-performance.md which is a markdown about our performance measurements
+performance.md which is a markdown about our performance measurements for part 2.
+
+OptimizationTutorial.md which is a markdown file for a codelab to optimization the application for part 3.
 
 the folder images/ includes our graphs
 
